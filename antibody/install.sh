@@ -12,7 +12,11 @@ if is_mac; then
     brew_tap 'getantibody/tap'
     brew_install antibody
 else
-    curl -sL https://git.io/antibody | sh -s
+    if ! check_command antibody; then
+        curl -sL https://git.io/antibody | sh -s
+    else
+        success "antibody is already installed"
+    fi
 fi
 
 rm -rf $(antibody home)
