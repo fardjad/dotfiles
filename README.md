@@ -46,6 +46,10 @@ In order to set macOS defaults (optional) run the following:
 [ -d ~/.dotfiles ] && ~/.dotfiles/macos/setup-macos.sh || >&2 echo 'You must clone the repository first!'
 ```
 
+## More Info
+
+[How to Install homebrew on Manjaro][11]
+
 ## License
 
 [Creative Commons Attribution-NonCommercial 4.0 International License.][10]
@@ -60,3 +64,4 @@ In order to set macOS defaults (optional) run the following:
 [8]: https://brew.sh
 [9]: https://www.sudo.ws
 [10]: http://creativecommons.org/licenses/by-nc/4.0/
+[11]: https://gist.github.com/114ebf50a0dd031418bb63b3b134db51
