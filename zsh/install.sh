@@ -16,4 +16,8 @@ if ! grep -q "$ZSH_PATH" /etc/shells; then
     echo "$ZSH_PATH" | sudo tee -a /etc/shells
 fi
 
-chsh $(whoami) -s "$ZSH_PATH"
+if is_mac; then
+    chsh -u $(whoami) -s "$ZSH_PATH"
+else
+    chsh $(whoami) -s "$ZSH_PATH"
+fi
