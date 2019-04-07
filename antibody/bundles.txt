@@ -1,0 +1,9 @@
+# this block is in alphabetic order
+mafredri/zsh-async
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+
+# these should be at last!
+sindresorhus/pure
+zdharma/fast-syntax-highlighting
+zsh-users/zsh-history-substring-search

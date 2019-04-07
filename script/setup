@@ -1,0 +1,42 @@
+#!/usr/bin/env bash
+
+set -e
+
+source "$(dirname "$0")/bootstrap.bash"
+
+link_file() {
+    if [ -e "$2" ]; then
+        if [ "$(readlink "$2")" = "$1" ]; then
+            success "skipped $1"
+            return 0
+        else
+            mv "$2" "$2.backup"
+            success "moved $2 to $2.backup"
+        fi
+    fi
+    ln -sf "$1" "$2"
+    success "linked $1 to $2"
+}
+
+link_dotfiles() {
+    info 'linking dotfiles'
+    find -H "$DOTFILES" -name '*.symlink' -not -path '*.git*' |
+        while read -r src; do
+            dst="$HOME/.$(basename "${src%.*}")"
+            link_file "$src" "$dst"
+        done
+}
+
+run_installers() {
+    info 'running installers'
+    find -H "$DOTFILES" -name 'install.sh' -not -path '*.git*' |
+        while read -r installer; do
+            info "running ${installer}..."
+            bash -c "$installer"
+        done
+}
+
+link_dotfiles
+run_installers
+
+echo '  All done!'
