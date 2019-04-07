@@ -15,3 +15,5 @@ if ! grep -q "$ZSH_PATH" /etc/shells; then
     info "adding $ZSH_PATH to /etc/shells"
     echo "$ZSH_PATH" | sudo tee -a /etc/shells
 fi
+
+chsh $(whoami) -s "$ZSH_PATH"
