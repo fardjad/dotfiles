@@ -55,5 +55,3 @@ set softtabstop=4
 " use spaces instead of tabs
 set expandtab
 
-" set updatetime to 100ms (recommended by gitgutter plugin author)
-set updatetime=100

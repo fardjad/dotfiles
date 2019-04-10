@@ -2,42 +2,37 @@
 call plug#begin('$HOME/.vim/plugged')
 
 Plug 'ElmCast/elm-vim'
-Plug 'altercation/vim-colors-solarized'
-Plug 'joshdick/onedark.vim'
+Plug 'airblade/vim-gitgutter'
+Plug 'ap/vim-buftabline'
+Plug 'christoomey/vim-tmux-navigator'
+Plug 'easymotion/vim-easymotion'
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'joshdick/onedark.vim'
+Plug 'leafgarland/typescript-vim'
+Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'pangloss/vim-javascript'
+Plug 'prettier/vim-prettier', { 'do': 'yarn install' }
 Plug 'scrooloose/nerdtree'
 Plug 'takac/vim-hardtime'
-Plug 'tpope/vim-sensible'
-Plug 'w0rp/ale'
 Plug 'terryma/vim-multiple-cursors'
-Plug 'easymotion/vim-easymotion'
-Plug 'christoomey/vim-tmux-navigator'
-Plug 'Shougo/deoplete.nvim'
-Plug 'roxma/nvim-yarp'
-Plug 'roxma/vim-hug-neovim-rpc', { 'do': 'pip3 install -U neovim' }
-Plug 'carlitux/deoplete-ternjs', { 'do': 'npm install -g tern' }
-Plug 'ap/vim-buftabline'
-Plug 'jlanzarotta/bufexplorer'
-Plug 'tpope/vim-surround'
-Plug 'heavenshell/vim-jsdoc'
-Plug 'ternjs/tern_for_vim', { 'do': 'npm install' }
-Plug 'airblade/vim-gitgutter'
 Plug 'tpope/vim-fugitive'
+Plug 'tpope/vim-sensible'
+Plug 'tpope/vim-surround'
+Plug 'w0rp/ale'
 
 " Initialize plugin system
 call plug#end()
 
 source $HOME/.vim/basic.vim
+source $HOME/.vim/gui.vim
+
 source $HOME/.vim/ale.vim
+source $HOME/.vim/bufexplorer.vim
+source $HOME/.vim/coc.vim
 source $HOME/.vim/color.vim
 source $HOME/.vim/crontab.vim
-source $HOME/.vim/gui.vim
-source $HOME/.vim/javascript.vim
-source $HOME/.vim/nerdtree.vim
-source $HOME/.vim/hardtime.vim
 source $HOME/.vim/easymotion.vim
-source $HOME/.vim/deoplete.vim
-source $HOME/.vim/bufexplorer.vim
+source $HOME/.vim/hardtime.vim
+source $HOME/.vim/nerdtree.vim
 source $HOME/.vim/vim-hardtime.vim
-source $HOME/.vim/vim-jsdoc.vim
