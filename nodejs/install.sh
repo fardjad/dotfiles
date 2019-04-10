@@ -28,3 +28,7 @@ if ! check_command "node"; then
     nvs add lts
     nvs link lts
 fi
+
+if ! check_command "yarn"; then
+    npm install -g yarn
+fi
