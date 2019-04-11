@@ -1,0 +1,13 @@
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'christoomey/vim-tmux-navigator'
+
+# Enable mouse
+set-option -g mouse on
+bind C-l send-keys 'C-l'
+bind C-k clear-history
+
+# Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run '~/.tmux/plugins/tpm/tpm'
+
