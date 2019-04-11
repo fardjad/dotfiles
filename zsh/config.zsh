@@ -34,6 +34,10 @@ zle -N down-line-or-beginning-search
 # emacs mode
 bindkey -e
 
+# key bindings
+# note: you can use sed -n l to figure out what escape sequences are sent to
+# the terminal
+
 # fuzzy find: start to type
 bindkey "$terminfo[kcuu1]" up-line-or-beginning-search
 bindkey "$terminfo[kcud1]" down-line-or-beginning-search
