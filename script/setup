@@ -29,7 +29,7 @@ link_dotfiles() {
 
 run_installers() {
     info 'running installers'
-    find -H "$DOTFILES" -name 'install.sh' -not -path '*.git*' |
+    find -H "$DOTFILES" -name 'install.sh' -not -path '*.git*' -depth 2 |
         while read -r installer; do
             info "running ${installer}..."
             bash -c "$installer"
