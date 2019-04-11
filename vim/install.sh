@@ -4,10 +4,14 @@ set -e
 
 source "$(dirname "$0")/../script/bootstrap.bash"
 
-if check_command brew; then
-    brew_install vim
+if is_mac; then
+    if check_command brew; then
+        brew_install vim
+    else
+        fail 'brew must be installed'
+    fi
 else
-    fail 'brew must be installed'
+    user 'make sure to install the latest version of vim with +clipboard feature enabled using your distro package manager'
 fi
 
 brew_install python
