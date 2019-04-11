@@ -2,7 +2,7 @@
 
 ## Synopsis
 
-Inspired by [carlos' dotfiles][1], this repository contains my no-frills 
+Inspired by [carlos' dotfiles][1], this repository contains my no-frills
 dotfiles for macOS and Linux.
 
 It comes with an automated installer script and leverages homebrew to install
@@ -10,13 +10,13 @@ packages on macOS and various Linux distributions.
 
 Config files are crafted for my own use and focus mostly on Web Development.
 
-## What are dotfiles?
+## What Are "dotfiles"?
 
 > Dotfiles are used to customize your system. The "dotfiles" name is derived
 > from the configuration files in Unix-like systems that start with a dot
-> (e.g. .bash_profile and .gitconfig). For normal users, this indicates these
-> are not regular documents, and by default are hidden in directory listings.
-> For power users, however, they are a core tool belt.
+> (e.g. `.bash_profile` and `.gitconfig`). For normal users, this indicates
+> these are not regular documents, and by default are hidden in directory
+> listings. For power users, however, they are a core tool belt.
 > -- <cite>[Lars Kappert][2]</cite>
 
 ## Installation
@@ -26,13 +26,13 @@ and [Manjaro][4].
 
 The following software packages are required to run the setup script.
 
-|Dependency  |Purpose                                                   |
-|------------|----------------------------------------------------------|
-|[git][5] |Required for cloning this repository                         |
-|[curl][6]|Used for downloading files from the web                      |
-|[bash][7]|Required for running the installer script                    |
-|[brew][8]|Required for installing packages on macOS or Linux           |
-|[sudo][9]|Required by the installer script to run some commands as root|
+| Dependency | Purpose                                                       |
+| ---------- | ------------------------------------------------------------- |
+| [git][5]   | Required for cloning this repository                          |
+| [curl][6]  | Used for downloading files from the web                       |
+| [bash][7]  | Required for running the installer script                     |
+| [brew][8]  | Required for installing packages on macOS or Linux            |
+| [sudo][9]  | Required by the installer script to run some commands as root |
 
 In order to install the dotfiles run the following command in a bash shell:
 
@@ -40,15 +40,19 @@ In order to install the dotfiles run the following command in a bash shell:
 git clone https://github.com/fardjad/dotfiles.git ~/.dotfiles && ~/.dotfiles/script/setup
 ```
 
-In order to set macOS defaults (optional) run the following:
+## OS Specific Notes
+
+- (Linux only) Check out [this gist][11] for more info on how to install
+  homebrew on Manjaro.
+
+- (macOS only, optional) In order to set macOS defaults run the following:
 
 ```bash
 [ -d ~/.dotfiles ] && ~/.dotfiles/macos/setup-macos.sh || >&2 echo 'You must clone the repository first!'
 ```
 
-## More Info
-
-[How to Install homebrew on Manjaro][11]
+- (macOS only, optional) Configure iTerm2 to load preferences from
+  `~/.dotfiles/macos/iterm2` directory.
 
 ## License
 
