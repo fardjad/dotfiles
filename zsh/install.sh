@@ -19,5 +19,5 @@ fi
 if is_mac; then
     chsh -u $(whoami) -s "$ZSH_PATH"
 else
-    chsh $(whoami) -s "$ZSH_PATH"
+    sudo chsh $(whoami) -s "$ZSH_PATH"
 fi
