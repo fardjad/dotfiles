@@ -14,23 +14,27 @@ set -g default-terminal "xterm-256color"
 set-option -ga terminal-overrides ",xterm-256color:Tc"
 
 # Theme
+c8="#2C323C"
+c7="#ABB2BF"
+c15="#3B4048"
+
 set-option -g status-position bottom
 
-set-option -g mode-style fg=colour0,bg=colour7
+set-option -g mode-style fg=colour0,bg="${c7}"
 
 set-option -g status-justify left
 set-option -g status-left ""
 set-option -g status-right "#{prefix_highlight}"
-set-option -g status-style bg=colour8
+set-option -g status-style bg="${c8}"
 
-set-option -g pane-active-border-style fg=colour7
-set-option -g pane-border-style fg=colour8
+set-option -g pane-active-border-style fg="${c7}"
+set-option -g pane-border-style fg="${c8}"
 
 set-window-option -g window-status-current-format " #I:#W "
-set-window-option -g window-status-current-style fg=colour0,bg=colour7
+set-window-option -g window-status-current-style fg=colour0,bg="${c7}"
 set-window-option -g window-status-format " #I:#W "
 set-window-option -g window-status-separator " "
-set-window-option -g window-status-style fg=colour0,bg=colour15
+set-window-option -g window-status-style fg=colour0,bg="${c15}"
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
