@@ -2,6 +2,8 @@
 <!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
 <plist version="1.0">
 <dict>
+	<key>AllowClipboardAccess</key>
+	<true/>
 	<key>AppleAntiAliasingThreshold</key>
 	<integer>1</integer>
 	<key>AppleScrollAnimationEnabled</key>
@@ -385,7 +387,7 @@
 	<key>NSWindow Frame SharedPreferences</key>
 	<string>807 418 796 486 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 0</key>
-	<string>439 102 1066 758 0 0 1920 1058 </string>
+	<string>425 205 1066 758 0 0 1920 1058 </string>
 	<key>NSWindow Frame iTerm Window 1</key>
 	<string>510 145 1066 758 0 0 1920 1058 </string>
 	<key>NeverWarnAboutShortLivedSessions_621BF355-D91E-48A5-933A-C2AB12D35863</key>
@@ -1287,7 +1289,7 @@
 	<key>SUHasLaunchedBefore</key>
 	<true/>
 	<key>SULastCheckTime</key>
-	<date>2019-04-11T18:45:02Z</date>
+	<date>2019-04-15T06:27:08Z</date>
 	<key>SUSendProfileInfo</key>
 	<false/>
 	<key>ShowFullScreenTabBar</key>

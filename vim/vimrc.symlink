@@ -1,7 +1,7 @@
 " plugins
 call plug#begin('$HOME/.vim/plugged')
 
-Plug 'ElmCast/elm-vim'
+Plug 'ElmCast/elm-vim', { 'do': 'npm install -g elm-test elm-oracle elm-format' }
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-buftabline'
 Plug 'christoomey/vim-tmux-navigator'
@@ -29,6 +29,7 @@ source $HOME/.vim/gui.vim
 
 source $HOME/.vim/ale.vim
 source $HOME/.vim/bufexplorer.vim
+source $HOME/.vim/buftabline.vim
 source $HOME/.vim/coc.vim
 source $HOME/.vim/color.vim
 source $HOME/.vim/crontab.vim
