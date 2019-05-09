@@ -33,6 +33,10 @@ if ! check_command "yarn"; then
     npm install -g yarn
 fi
 
+if ! check_command "pnpm"; then
+    npm install -g pnpm
+fi
+
 if ! check_command "elm"; then
-    npm install -g elm
+    npm install -g elm elm-format elm-oracle elm-test
 fi
