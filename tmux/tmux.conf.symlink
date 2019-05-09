@@ -36,6 +36,11 @@ set-window-option -g window-status-format " #I:#W "
 set-window-option -g window-status-separator " "
 set-window-option -g window-status-style fg=colour0,bg="${c15}"
 
+# Preserve PWD
+bind '%' split-window -h -c '#{pane_current_path}'  # Split panes horizontal
+bind '"' split-window -v -c '#{pane_current_path}'  # Split panes vertically
+bind c new-window -c '#{pane_current_path}' # Create new window
+
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
 
