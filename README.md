@@ -45,7 +45,7 @@ git clone https://github.com/fardjad/dotfiles.git ~/.dotfiles && ~/.dotfiles/scr
 - (Linux only) Check out [this gist][11] for more info on how to install
   homebrew on Manjaro.
 
-- (Linux only) Install latest version of **vim** with **+clipboard** featured 
+- (Linux only) Install latest version of **vim** with **+clipboard** feature 
   enabled using your distro package manager (you can do so by running 
   `pacman -S gvim` on Arch/Manjaro).
 
