@@ -16,6 +16,7 @@ fi
 taps="
 caskroom/fonts
 buo/cask-upgrade
+homebrew/cask-versions
 "
 for tap in $taps; do
     brew_tap "$tap"
@@ -25,6 +26,9 @@ cask_packages="
 alfred
 altair-graphql-client
 anaconda
+android-file-transfer
+android-platform-tools
+anydesk
 appcleaner
 avidemux
 bitbar
@@ -37,13 +41,14 @@ drawio
 dropbox
 eloston-chromium
 firefox
+flash-player
+flash-ppapi
 flycut
 font-fira-code
 handbrake
 igetter
 insomnia
 iterm2
-java
 joplin
 karabiner-elements
 keka
@@ -59,6 +64,7 @@ postgres
 protonvpn
 skype
 spotify
+staruml
 tableplus
 tad
 telegram
