@@ -3,6 +3,8 @@ export TERM="xterm-256color"
 export LSCOLORS='exfxcxdxbxegedabagacad'
 export CLICOLOR=true
 
+export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=238"
+
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 
