@@ -22,5 +22,15 @@ if ! check_command "sdkman"; then
     source "$SDKMAN_DIR/bin/sdkman-init.sh"
 fi
 
-sdk install java 11.0.3.hs-adpt
-sdk default java 11.0.3.hs-adpt
+JAVA_VERSION="8.0.222.hs-adpt"
+sdk install java $JAVA_VERSION
+sdk default java $JAVA_VERSION
+
+SCALA_VERSION="2.13.0"
+sdk install scala $SCALA_VERSION
+sdk default scala $SCALA_VERSION
+
+SBT_VERSION="1.2.8"
+sdk install sbt $SBT_VERSION
+sdk default sbt $SBT_VERSION
+
