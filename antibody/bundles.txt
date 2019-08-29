@@ -1,6 +1,9 @@
 # this block is in alphabetic order
 mafredri/zsh-async
 robbyrussell/oh-my-zsh
+robbyrussell/oh-my-zsh path:plugins/docker
+robbyrussell/oh-my-zsh path:plugins/git-flow
+robbyrussell/oh-my-zsh path:plugins/sudo
 robbyrussell/oh-my-zsh path:plugins/tmux
 zsh-users/zsh-autosuggestions
 zsh-users/zsh-completions
