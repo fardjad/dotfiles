@@ -1,0 +1,12 @@
+#!/bin/bash
+
+if ! command -v docker 2>&1 >/dev/null; then
+  echo 'Docker is not installed!'
+  exit 1
+fi
+
+docker container prune -f
+docker network prune -f
+docker volume prune -f
+# only remove the dangling images
+docker image prune -f

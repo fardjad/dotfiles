@@ -1,0 +1,26 @@
+#!/bin/bash
+
+if ! command -v cpy 2>&1 >/dev/null; then
+  echo 'cpy is not installed. Install the cpy-cli package (npm install -g cpy-cli) and try again.'
+  exit 1
+fi
+
+if [ "$#" -ne 2 ]; then
+    echo "Usage: tgz-node-project /path/to/node/project /path/to/backup/archive.tar.gz"
+    exit 1
+fi
+
+if [ ! -d "$1" ]; then
+  echo "$1 is not a directory!"
+  exit 1
+fi
+
+if [ -e "$2" ]; then
+  echo "$2 already exists!"
+  exit 1
+fi
+
+tmp_dir=$(mktemp -d)
+cpy '**/*' '!**/node_modules' "${tmp_dir}" --cwd="$1" --parents
+tar -czf "$2" -C "${tmp_dir}" .
+rm -rf "${tmp_dir}"
