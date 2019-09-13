@@ -6,6 +6,7 @@ Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-buftabline'
 Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'jlanzarotta/bufexplorer'
 Plug 'joshdick/onedark.vim'
@@ -38,4 +39,5 @@ source $HOME/.vim/easymotion.vim
 source $HOME/.vim/hardtime.vim
 source $HOME/.vim/nerdtree.vim
 source $HOME/.vim/rust.vim
+source $HOME/.vim/vim-go.vim
 source $HOME/.vim/vim-hardtime.vim
