@@ -6,7 +6,7 @@ export EDITOR='vim'
 
 # auto load tmux
 export ZSH_TMUX_AUTOSTART=true
-export ZSH_TMUX_AUTOCONNECT=false
+export ZSH_TMUX_AUTOQUIT=false
 
 # all of our zsh files
 typeset -U config_files
