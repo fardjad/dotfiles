@@ -27,6 +27,7 @@ if ! check_command "node"; then
 
     nvs add lts
     nvs link lts
+    nvs use lts
 fi
 
 if ! check_command "yarn"; then
