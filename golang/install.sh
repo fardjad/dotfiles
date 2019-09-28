@@ -13,7 +13,11 @@ fi
 
 if ! check_command "gvm"; then
     export GVM_NO_UPDATE_PROFILE=1
-    . < <(curl -s -S -L https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)
+    $(which bash) -c "$(curl -fsSL https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)"
 
     [ -s "$HOME/.gvm/scripts/gvm" ] && . "$HOME/.gvm/scripts/gvm"
+
+    GO_VERSION="go1.13"
+    gvm install "${GO_VERSION}" -pb -b -B
+    gvm use "${GO_VERSION}" --default
 fi
