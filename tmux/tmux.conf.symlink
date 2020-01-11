@@ -2,12 +2,11 @@
 set -g @plugin 'christoomey/vim-tmux-navigator'
 set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
 set -g @plugin 'tmux-plugins/tmux-sensible'
+set -g @plugin 'tmux-plugins/tmux-yank'
 set -g @plugin 'tmux-plugins/tpm'
 
 # Enable mouse
 set-option -g mouse on
-bind C-l send-keys 'C-l'
-bind C-k clear-history
 
 # Terminal Colors
 set -g default-terminal "xterm-256color"
@@ -40,6 +39,13 @@ set-window-option -g window-status-style fg=colour0,bg="${c15}"
 bind '%' split-window -h -c '#{pane_current_path}'  # Split panes horizontal
 bind '"' split-window -v -c '#{pane_current_path}'  # Split panes vertically
 bind c new-window -c '#{pane_current_path}' # Create new window
+
+# history
+bind C-l send-keys 'C-l'
+bind C-k clear-history
+
+# disable pane numbers timeout
+bind -T prefix q display-panes -d 0
 
 # Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
 run '~/.tmux/plugins/tpm/tpm'
