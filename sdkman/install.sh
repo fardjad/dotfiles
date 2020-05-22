@@ -24,15 +24,17 @@ if ! check_command "sdkman"; then
     source "$SDKMAN_DIR/bin/sdkman-init.sh"
 fi
 
-JAVA_VERSION="$(sdk ls java | grep -Ev 'local only' | awk -F '|' '{ print $6 }' | grep -Eo '8.*hs.adpt')"
+sdk update
+
+JAVA_VERSION="$(sdk ls java | grep -Ev 'local only' | awk -F '|' '{ print $6 }' | grep -Eo '11.*hs.adpt')"
 sdk install java $JAVA_VERSION || true
 sdk default java $JAVA_VERSION
 
-SCALA_VERSION="2.13.1"
+SCALA_VERSION="2.13.2"
 sdk install scala $SCALA_VERSION || true
 sdk default scala $SCALA_VERSION
 
-SBT_VERSION="1.3.6"
+SBT_VERSION="1.3.10"
 sdk install sbt $SBT_VERSION || true
 sdk default sbt $SBT_VERSION
 
@@ -40,7 +42,7 @@ MAVEN_VERSION="3.6.3"
 sdk install maven $MAVEN_VERSION || true
 sdk default maven $MAVEN_VERSION
 
-GRADLE_VERSION="6.0.1"
+GRADLE_VERSION="6.4.1"
 sdk install gradle $GRADLE_VERSION || true
 sdk default gradle $GRADLE_VERSION
 
