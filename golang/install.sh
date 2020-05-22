@@ -6,7 +6,8 @@ source "$(dirname "$0")/../script/bootstrap.bash"
 
 if check_command brew; then
     brew_install git
-    brew install mercurial
+    brew_install mercurial
+    brew_install bison
 else
     fail 'brew must be installed'
 fi
@@ -17,7 +18,7 @@ if ! check_command "gvm"; then
 
     [ -s "$HOME/.gvm/scripts/gvm" ] && . "$HOME/.gvm/scripts/gvm"
 
-    GO_VERSION="go1.13"
+    GO_VERSION="go1.14.3"
     gvm install "${GO_VERSION}" -pb -b -B
     gvm use "${GO_VERSION}" --default
 fi
