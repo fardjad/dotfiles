@@ -18,7 +18,7 @@ if ! check_command "gvm"; then
 
     [ -s "$HOME/.gvm/scripts/gvm" ] && . "$HOME/.gvm/scripts/gvm"
 
-    GO_VERSION="go1.14.3"
+    GO_VERSION="go1.14.6"
     gvm install "${GO_VERSION}" -pb -b -B
     gvm use "${GO_VERSION}" --default
 fi
