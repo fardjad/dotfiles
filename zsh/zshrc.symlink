@@ -4,10 +4,6 @@ export DOTFILES="$HOME/.dotfiles"
 # default editor
 export EDITOR='vim'
 
-# auto load tmux
-[ -n "$ZSH_TMUX_AUTOSTART" ] || export ZSH_TMUX_AUTOSTART=true
-[ -n "$ZSH_TMUX_AUTOQUIT" ] || export ZSH_TMUX_AUTOQUIT=false
-
 # all of our zsh files
 typeset -U config_files
 config_files=($DOTFILES/*/*.zsh)
