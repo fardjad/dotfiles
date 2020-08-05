@@ -1,7 +1,6 @@
 " plugins
 call plug#begin('$HOME/.vim/plugged')
 
-Plug 'ElmCast/elm-vim', { 'do': 'npm install -g elm-test elm-oracle elm-format' }
 Plug 'airblade/vim-gitgutter'
 Plug 'ap/vim-buftabline'
 Plug 'christoomey/vim-tmux-navigator'
