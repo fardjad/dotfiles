@@ -37,7 +37,3 @@ fi
 if ! check_command "pnpm"; then
     npm install -g pnpm
 fi
-
-if ! check_command "elm"; then
-    npm install -g elm elm-format elm-oracle elm-test
-fi
