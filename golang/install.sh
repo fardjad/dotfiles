@@ -13,6 +13,8 @@ else
 fi
 
 if ! check_command "gvm"; then
+    [ -d "$HOME/.gvm" ] && rm -rf "$HOME/.gvm"
+
     export GVM_NO_UPDATE_PROFILE=1
     $(which bash) -c "$(curl -fsSL https://raw.githubusercontent.com/moovweb/gvm/master/binscripts/gvm-installer)"
 
