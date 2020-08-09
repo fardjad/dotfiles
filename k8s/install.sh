@@ -5,7 +5,8 @@ set -e
 source "$(dirname "$0")/../script/bootstrap.bash"
 
 if ! check_command docker; then
-  fail 'docker must be installed'
+  user 'docker is not installed/configured. Setup docker and re-run the installation script'
+  exit 0
 fi
 
 if ! docker info &>/dev/null; then
