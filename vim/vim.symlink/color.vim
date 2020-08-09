@@ -1,6 +1,12 @@
 set bg=dark
-let g:onedark_termcolors=16
-silent! colorscheme onedark
+
+let g:spacegray_use_italics=1
+silent! colorscheme spacegray
+
+hi Normal guibg=#2d2d2d
+hi Terminal guibg=#2d2d2d
+hi SignColumn guibg=#2d2d2d
+hi LineNr guibg=#2d2d2d
 
 " show the right margin
 set colorcolumn=80

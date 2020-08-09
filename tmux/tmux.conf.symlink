@@ -13,9 +13,9 @@ set -g default-terminal "xterm-256color"
 set-option -ga terminal-overrides ",xterm-256color:Tc"
 
 # Theme
-c8="#2C323C"
-c7="#ABB2BF"
-c15="#3B4048"
+c8="#303537"
+c7="#D3D3D3"
+c15="#B7BBB7"
 
 set-option -g status-position bottom
 
