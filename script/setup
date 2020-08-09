@@ -39,4 +39,5 @@ run_installers() {
 link_dotfiles
 run_installers
 
-echo '  All done!'
+echo '  All done! Make sure to check the logs for errors.'
+echo '  Restart the terminal session and enjoy!'
