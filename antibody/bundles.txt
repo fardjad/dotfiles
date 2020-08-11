@@ -10,5 +10,6 @@ zsh-users/zsh-completions
 
 # these should be at last!
 sindresorhus/pure
+chriskempson/base16-shell
 zdharma/fast-syntax-highlighting
 zsh-users/zsh-history-substring-search

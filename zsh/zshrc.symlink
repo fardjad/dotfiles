@@ -17,6 +17,10 @@ done
 export ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
 source ~/.zsh_plugins.sh
 
+# apply the theme
+base16_eighties
+fast-theme -q HOME:overlay
+
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
   source "$file"

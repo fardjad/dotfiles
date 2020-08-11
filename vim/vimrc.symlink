@@ -8,7 +8,7 @@ Plug 'easymotion/vim-easymotion'
 Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
 Plug 'jeffkreeftmeijer/vim-numbertoggle'
 Plug 'jlanzarotta/bufexplorer'
-Plug 'ajh17/Spacegray.vim'
+Plug 'chriskempson/base16-vim'
 Plug 'leafgarland/typescript-vim'
 Plug 'neoclide/coc.nvim', { 'do': 'yarn install --frozen-lockfile' }
 Plug 'pangloss/vim-javascript'
