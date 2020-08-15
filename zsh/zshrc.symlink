@@ -1,6 +1,10 @@
 # shortcut to this dotfiles path is $DOTFILES
 export DOTFILES="$HOME/.dotfiles"
 
+# use .localrc for SUPER SECRET CRAP that you don't want in your public, 
+# versioned repo.
+[ -f ~/.localrc ] && . ~/.localrc
+
 # default editor
 export EDITOR='vim'
 
@@ -41,7 +45,3 @@ for file in ${(M)config_files:#*/completion.zsh}; do
 done
 
 unset config_files updated_at
-
-# use .localrc for SUPER SECRET CRAP that you don't want in your public, 
-# versioned repo.
-[ -f ~/.localrc ] && . ~/.localrc
