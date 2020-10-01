@@ -66,15 +66,6 @@ defaults write NSGlobalDomain NSAutomaticDashSubstitutionEnabled -bool false
 # Disable auto-correct
 defaults write NSGlobalDomain NSAutomaticSpellingCorrectionEnabled -bool false
 
-# Set dark interface style
-defaults write NSGlobalDomain AppleInterfaceStyle -string "Dark"
-
-# Set graphite appearance
-defaults write NSGlobalDomain AppleAquaColorVariant -int 6
-
-# Set graphite highlight color
-defaults write NSGlobalDomain AppleHighlightColor -string "0.847059 0.847059 0.862745"
-
 # Set sidebar icon size to small
 defaults write NSGlobalDomain NSTableViewDefaultSizeMode -int 1
 
