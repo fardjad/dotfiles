@@ -21,7 +21,7 @@ Config files are crafted for my own use and focus mostly on Web Development.
 
 ## Installation
 
-The repository is tested on the latest version of [macOS HighSierra][3]
+The repository is tested on the latest version of [macOS Catalina][3]
 and [Manjaro][4].
 
 The following software packages are required to run the setup script.
@@ -64,7 +64,7 @@ git clone https://github.com/fardjad/dotfiles.git ~/.dotfiles && ~/.dotfiles/scr
 
 [1]: https://github.com/caarlos0/dotfiles
 [2]: https://medium.com/@webprolific/getting-started-with-dotfiles-43c3602fd789
-[3]: https://en.wikipedia.org/wiki/MacOS_High_Sierra
+[3]: https://en.wikipedia.org/wiki/MacOS_Catalina
 [4]: https://manjaro.org
 [5]: https://git-scm.com
 [6]: https://curl.haxx.se
