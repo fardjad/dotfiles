@@ -12,6 +12,9 @@ else
     fail 'brew must be installed'
 fi
 
+# Install a bootstrap version. It might not be needed but it doesn't hurt to have it anyways
+brew_install golang
+
 if ! check_command "gvm"; then
     [ -d "$HOME/.gvm" ] && rm -rf "$HOME/.gvm"
 
@@ -20,7 +23,7 @@ if ! check_command "gvm"; then
 
     [ -s "$HOME/.gvm/scripts/gvm" ] && . "$HOME/.gvm/scripts/gvm"
 
-    GO_VERSION="go1.15.2"
-    gvm install "${GO_VERSION}" -pb -b -B
+    GO_VERSION="go1.15.5"
+    gvm install "${GO_VERSION}" -pb -b
     gvm use "${GO_VERSION}" --default
 fi
