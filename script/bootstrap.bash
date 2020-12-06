@@ -34,7 +34,7 @@ brew_install() {
 }
 
 brew_cask_install() {
-    if ! brew cask ls --versions "$1" >/dev/null 2>&1; then
+    if ! brew ls --cask --versions "$1" >/dev/null 2>&1; then
         info "installing $1..."
         brew cask install "$1" || fail "error installing $1"
     else
