@@ -157,7 +157,7 @@ defaults write com.apple.dock mru-spaces -bool false
 sudo pmset -a hibernatemode 0
 
 # Remove the sleep image file to save disk space
-sudo rm /private/var/vm/sleepimage
+sudo rm -f /private/var/vm/sleepimage
 
 # Create a zero-byte file instead...
 sudo touch /private/var/vm/sleepimage

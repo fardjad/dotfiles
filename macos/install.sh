@@ -22,37 +22,56 @@ for tap in $taps; do
     brew_tap "$tap"
 done
 
+# brew list --cask -1
 cask_packages="
 alfred
+android-platform-tools
+anydesk
 appcleaner
+balenaetcher
 bitwarden
-brave-browser
+charles
 cryptomator
+deepl
 docker
+eqmac
 firefox
 font-fira-code
-hiddenbar
+github
 iterm2
 joplin
 karabiner-elements
+keepassxc
 keka
+lens
 lepton
 menumeters
+miro
 mongodb-compass
+moom
 nextcloud
 ngrok
+obs
+osxfuse
+pastebot
 postman
 protonvpn
 rambox
 skype
+slack
+sourcetree
 spotify
+steam
 syncthing
 telegram
+vagrant
 veracrypt
 virtualbox
 virtualbox-extension-pack
 visual-studio-code
 vlc
+whatsapp
+zoho-mail
 "
 for package in $cask_packages; do
     brew_cask_install "$package"
