@@ -7,6 +7,7 @@ source "$(dirname "$0")/../script/bootstrap.bash"
 if is_mac; then
     if check_command brew; then
         brew_install vim
+        brew_install nvim
     else
         fail 'brew must be installed'
     fi
@@ -21,3 +22,6 @@ if ! check_command npm; then
 fi
 
 user 'run "vim +PlugInstall +qall" to install the plugins'
+NVIM_CONFIG_DIR="$HOME/.config/nvim"
+mkdir -p "$NVIM_CONFIG_DIR"
+user 'run "ln -s '$DOTFILES'/vim/vimrc.symlink '$NVIM_CONFIG_DIR'/init.vim" to use the same config for Neovim'
