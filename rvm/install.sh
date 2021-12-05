@@ -29,7 +29,11 @@ if ! check_command rvm; then
 fi
 
 RUBY_VERSION="2.7.2"
-rvm get stable --autolibs=homebrew
+if is_mac; then
+  rvm get stable --autolibs=homebrew
+else
+  rvm get stable
+fi
 rvm install "ruby-${RUBY_VERSION}"
 rvm alias create default "${RUBY_VERSION}"
 
