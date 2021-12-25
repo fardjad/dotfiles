@@ -7,4 +7,3 @@ set colorcolumn=80
 
 " enable terminal gui colors
 set termguicolors
-

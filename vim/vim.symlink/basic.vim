@@ -5,7 +5,7 @@ set nocompatible
 set nowrap
 
 " line numbers
-set number
+set relativenumber number
 
 " change leader to ,
 let mapleader=','
