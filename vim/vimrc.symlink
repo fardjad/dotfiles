@@ -29,6 +29,9 @@ if has('nvim')
   Plug 'hrsh7th/cmp-path'
   Plug 'hrsh7th/nvim-cmp'
   Plug 'neovim/nvim-lspconfig'
+  Plug 'nvim-lua/plenary.nvim'
+  Plug 'nvim-telescope/telescope-fzf-native.nvim', { 'do': 'make' }
+  Plug 'nvim-telescope/telescope.nvim'
   Plug 'saadparwaiz1/cmp_luasnip'
   Plug 'williamboman/nvim-lsp-installer'
 endif
@@ -51,5 +54,6 @@ if !exists('g:vscode')
 endif
 
 if has('nvim')
-  lua require('lsp')
+  lua require('config-lsp')
+  lua require('config-telescope')
 endif

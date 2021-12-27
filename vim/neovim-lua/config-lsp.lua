@@ -1,3 +1,4 @@
+local util = require('lspconfig.util')
 local lsp_installer = require('nvim-lsp-installer')
 
 local cmp = require('cmp')
@@ -81,6 +82,11 @@ lsp_installer.on_server_ready(function(server)
     on_attach = on_attach,
     flags = {debounce_text_changes = 150}
   }
+
+  if server.name == 'denols' then
+    -- do not enable denols by default
+    return
+  end
 
   server:setup(opts)
 end)

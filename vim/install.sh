@@ -24,8 +24,12 @@ user 'run "vim +PlugInstall +qall" to install the plugins'
 
 # Neovim
 brew_install nvim
+brew_install ripgrep
+
 curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
+# TODO: is there a better way to do this?
 NVIM_CONFIG_DIR="$HOME/.config/nvim"
 mkdir -p "$NVIM_CONFIG_DIR"
 user 'run "ln -s '$DOTFILES'/vim/vimrc.symlink '$NVIM_CONFIG_DIR'/init.vim" to use the same config for Neovim'
+user 'run "ln -s '$DOTFILES'/vim/neovim-lua '$NVIM_CONFIG_DIR'/lua" to use the lua config modules in Neovim'
 user 'run "nvim +PlugInstall +qall" to install the plugins'
