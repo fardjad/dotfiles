@@ -4,13 +4,12 @@ set -e
 
 source "$(dirname "$0")/../script/bootstrap.bash"
 
+if ! check_command brew; then
+  fail 'brew must be installed'
+fi
+
 if is_mac; then
-    if check_command brew; then
-        brew_install vim
-        brew_install nvim
-    else
-        fail 'brew must be installed'
-    fi
+  brew_install vim
 else
     user 'make sure to install the latest version of vim with +clipboard feature enabled using your distro package manager'
 fi
@@ -24,8 +23,9 @@ fi
 user 'run "vim +PlugInstall +qall" to install the plugins'
 
 # Neovim
+brew_install nvim
 curl -sfLo "${XDG_DATA_HOME:-$HOME/.local/share}"/nvim/site/autoload/plug.vim --create-dirs https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
-
 NVIM_CONFIG_DIR="$HOME/.config/nvim"
 mkdir -p "$NVIM_CONFIG_DIR"
 user 'run "ln -s '$DOTFILES'/vim/vimrc.symlink '$NVIM_CONFIG_DIR'/init.vim" to use the same config for Neovim'
+user 'run "nvim +PlugInstall +qall" to install the plugins'

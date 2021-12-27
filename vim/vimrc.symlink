@@ -2,7 +2,6 @@
 call plug#begin('$HOME/.vim/plugged')
 
 Plug 'easymotion/vim-easymotion'
-Plug 'takac/vim-hardtime'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
 
@@ -14,34 +13,43 @@ if !exists('g:vscode')
   Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
   Plug 'jeffkreeftmeijer/vim-numbertoggle'
   Plug 'jlanzarotta/bufexplorer'
-  Plug 'leafgarland/typescript-vim'
-  Plug 'neoclide/coc.nvim', { 'branch': 'release' }
-  Plug 'pangloss/vim-javascript'
+  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
   Plug 'prettier/vim-prettier', { 'do': 'npm install' }
   Plug 'rust-lang/rust.vim'
   Plug 'scrooloose/nerdtree'
-  Plug 'terryma/vim-multiple-cursors'
+  Plug 'takac/vim-hardtime'
   Plug 'tpope/vim-fugitive'
-  Plug 'w0rp/ale'
+endif
+
+if has('nvim')
+  Plug 'L3MON4D3/LuaSnip'
+  Plug 'hrsh7th/cmp-buffer'
+  Plug 'hrsh7th/cmp-cmdline'
+  Plug 'hrsh7th/cmp-nvim-lsp'
+  Plug 'hrsh7th/cmp-path'
+  Plug 'hrsh7th/nvim-cmp'
+  Plug 'neovim/nvim-lspconfig'
+  Plug 'saadparwaiz1/cmp_luasnip'
+  Plug 'williamboman/nvim-lsp-installer'
 endif
 
 " Initialize plugin system
 call plug#end()
 
 source $HOME/.vim/basic.vim
-source $HOME/.vim/gui.vim
-
 source $HOME/.vim/crontab.vim
 source $HOME/.vim/easymotion.vim
-source $HOME/.vim/hardtime.vim
 
 if !exists('g:vscode')
-  source $HOME/.vim/ale.vim
   source $HOME/.vim/bufexplorer.vim
   source $HOME/.vim/buftabline.vim
-  source $HOME/.vim/coc.vim
   source $HOME/.vim/color.vim
+  source $HOME/.vim/go.vim
+  source $HOME/.vim/hardtime.vim
   source $HOME/.vim/nerdtree.vim
   source $HOME/.vim/rust.vim
-  source $HOME/.vim/go.vim
+endif
+
+if has('nvim')
+  lua require('lsp')
 endif
