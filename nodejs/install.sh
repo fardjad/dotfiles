@@ -29,11 +29,3 @@ if ! check_command "node"; then
     nvs link lts
     nvs use lts
 fi
-
-if ! check_command "yarn"; then
-    npm install -g yarn
-fi
-
-if ! check_command "pnpm"; then
-    npm install -g pnpm
-fi
