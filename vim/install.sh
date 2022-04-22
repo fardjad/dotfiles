@@ -11,13 +11,13 @@ fi
 if is_mac; then
   brew_install vim
 else
-    user 'make sure to install the latest version of vim with +clipboard feature enabled using your distro package manager'
+  user 'make sure to install the latest version of vim with +clipboard feature enabled using your distro package manager'
 fi
 
 brew_install python
 
 if ! check_command npm; then
-    user 'make sure node.js is installed before running vim'
+  user 'make sure node.js is installed before running vim'
 fi
 
 user 'run "vim +PlugInstall +qall" to install the plugins'

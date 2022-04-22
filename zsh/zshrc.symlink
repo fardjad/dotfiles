@@ -7,9 +7,6 @@ export ZSH_DISABLE_COMPFIX="true"
 # versioned repo.
 [ -f ~/.localrc ] && . ~/.localrc
 
-# default editor
-export EDITOR='vim'
-
 # all of our zsh files
 typeset -U config_files
 config_files=($DOTFILES/*/*.zsh)
