@@ -12,6 +12,7 @@ HISTFILE=~/.zsh_history
 HISTSIZE=10000
 SAVEHIST=10000
 
+setopt autocd
 # share history between sessions
 setopt SHARE_HISTORY
 # add timestamps to history
@@ -48,13 +49,13 @@ bindkey "$terminfo[kcud1]" down-line-or-beginning-search
 bindkey "$terminfo[cuu1]" up-line-or-beginning-search
 bindkey "$terminfo[cud1]" down-line-or-beginning-search
 
-# backward and forward word with option+left/right
+# backward and forward word with ctrl/option+left/right
 bindkey '^[^[[D' backward-word
-bindkey '^[b' backward-word
+bindkey '^[[1;5D' backward-word
 bindkey '^[^[[C' forward-word
-bindkey '^[f' forward-word
+bindkey '^[[1;5C' forward-word
 
-# to to the beggining/end of line with fn+left/right or home/end
+# to the beggining/end of line with fn+left/right or home/end
 bindkey "${terminfo[khome]}" beginning-of-line
 bindkey '^[[H' beginning-of-line
 bindkey "${terminfo[kend]}" end-of-line
@@ -66,6 +67,5 @@ bindkey '^?' backward-delete-char
 
 # delete word with ctrl+backspace
 bindkey '^[[3;5~' backward-delete-word
-# bindkey '^[[3~' backward-delete-word
 
 bindkey '^R' history-incremental-search-backward
