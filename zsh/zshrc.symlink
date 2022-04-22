@@ -16,20 +16,11 @@ for file in ${(M)config_files:#*/path.zsh}; do
   source "$file"
 done
 
-# load antibody plugins
-export ZSH="$(antibody home)/https-COLON--SLASH--SLASH-github.com-SLASH-robbyrussell-SLASH-oh-my-zsh"
-source ~/.zsh_plugins.sh
-
-# apply the theme
-base16_eighties
-fast-theme -q HOME:overlay
-
 # load everything but the path and completion files
 for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
   source "$file"
 done
 
-# TODO: ???
 autoload -Uz compinit
 typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
 if [ $(date +'%j') != $updated_at ]; then
