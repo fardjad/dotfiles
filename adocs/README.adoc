@@ -1,0 +1,63 @@
+:nofooter:
+
+== Fardjad's dotfiles
+
+=== Synopsis
+
+This repository contains my no-frills 
+https://wiki.archlinux.org/title/Dotfiles[dotfiles]. 
+I use these dotfiles on the latest version of 
+https://www.apple.com/macos[macOS] and https://ubuntu.com/wsl[Ubuntu on WSL].
+
+It comes with an automated installer script and leverages 
+https://brew.sh[homebrew] to install packages on macOS and various Linux 
+distributions.
+
+=== Installation
+
+The following software packages are required to run the setup script.
+
+[cols="1,4" options="header"]
+|===
+|Dependency
+|Purpose
+
+|https://git-scm.com[git]
+|Required for cloning this repository
+
+|https://curl.haxx.se[curl]
+|Used for downloading files from the web
+
+|https://www.gnu.org/software/bash[bash]
+|Required for running the installer script
+
+|https://brew.sh[brew]
+|Required for installing packages on macOS or Linux
+
+|https://www.sudo.ws[sudo]
+|Required by the installer script to run some commands as root
+|===
+
+In order to install the dotfiles run the following command in a bash shell:
+
+[source,bash]
+....
+git clone https://github.com/fardjad/dotfiles.git ~/.dotfiles && ~/.dotfiles/script/setup
+....
+
+=== OS Specific Notes
+
+* ++[++macOS only, optional++]++ In order to set macOS defaults run the following:
+
+[source,bash]
+....
+[ -d ~/.dotfiles ] && ~/.dotfiles/macos/setup-macos.sh || echo >&2 'You must clone the repository first!'
+....
+
+* (macOS only, optional) Configure iTerm2 to load preferences from 
+`~/.dotfiles/macos/iterm2` directory.
+
+=== Credits
+
+The directory structure of this repository is inspired by 
+https://github.com/caarlos0/dotfiles[carlos' dotfiles]
