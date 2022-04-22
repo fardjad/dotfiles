@@ -5,12 +5,12 @@ set -e
 source "$(dirname "$0")/../script/bootstrap.bash"
 
 if ! is_mac; then
-    info "This machine is not running macOS. Skipping..."
-    exit 0
+  info "This machine is not running macOS. Skipping..."
+  exit 0
 fi
 
 if ! check_command "brew"; then
-    fail "brew must be installed!"
+  fail "brew must be installed!"
 fi
 
 taps="
@@ -19,7 +19,7 @@ buo/cask-upgrade
 homebrew/cask-versions
 "
 for tap in $taps; do
-    brew_tap "$tap"
+  brew_tap "$tap"
 done
 
 # brew list --cask -1
@@ -74,7 +74,7 @@ whatsapp
 zoho-mail
 "
 for package in $cask_packages; do
-    brew_cask_install "$package"
+  brew_cask_install "$package"
 done
 
 user "run $DOTFILES/macos/setup-macos.sh to setup macOS"

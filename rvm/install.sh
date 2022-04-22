@@ -14,18 +14,18 @@ function install_keys() {
     user 'gpg2 is not in path. install gnupg2 using your distro package manager and run the installer script again.'
     exit 0
   fi
-  
+
   curl -sSL https://rvm.io/mpapis.asc | gpg --import -
   curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
 }
 
 if ! check_command rvm; then
-    install_keys
-    RVM="$HOME/.rvm"
-    [ -d "$RVM" ] && rm -rf "$RVM"
+  install_keys
+  RVM="$HOME/.rvm"
+  [ -d "$RVM" ] && rm -rf "$RVM"
 
-    \curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
-    source "$RVM/scripts/rvm"
+  \curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
+  source "$RVM/scripts/rvm"
 fi
 
 RUBY_VERSION="2.7.2"

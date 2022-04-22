@@ -5,23 +5,23 @@ set -e
 source "$(dirname "$0")/../script/bootstrap.bash"
 
 if check_command brew; then
-    brew_install curl
-    brew_install zip
-    brew_install unzip
+  brew_install curl
+  brew_install zip
+  brew_install unzip
 else
-    fail 'brew must be installed'
+  fail 'brew must be installed'
 fi
 
 export SDKMAN_DIR="$HOME/.sdkman"
 
-if [ ! -d "$SDKMAN_DIR" ]; then 
-    curl -s "https://get.sdkman.io" | sed 's!^sdkman_bashrc=".*"$!sdkman_bashrc=/dev/null!' | sed 's!^sdkman_zshrc=".*"$!sdkman_zshrc=/dev/null!' | bash
+if [ ! -d "$SDKMAN_DIR" ]; then
+  curl -s "https://get.sdkman.io" | sed 's!^sdkman_bashrc=".*"$!sdkman_bashrc=/dev/null!' | sed 's!^sdkman_zshrc=".*"$!sdkman_zshrc=/dev/null!' | bash
 else
-    info 'sdkman is already installed.'
+  info 'sdkman is already installed.'
 fi
 
 if ! check_command "sdkman"; then
-    source "$SDKMAN_DIR/bin/sdkman-init.sh"
+  source "$SDKMAN_DIR/bin/sdkman-init.sh"
 fi
 
 export sdkman_auto_answer=true

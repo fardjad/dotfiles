@@ -1,0 +1,26 @@
+{
+  "name": "fardjad-dotfiles",
+  "version": "1.0.0",
+  "private": true,
+  "description": "My dotfiles for macOS and Linux",
+  "scripts": {
+    "fix": "prettier --ignore-path .gitignore --write .",
+    "prepare": "husky install",
+    "test": "prettier --ignore-path .gitignore --check ."
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/fardjad/dotfiles.git"
+  },
+  "author": "Fardjad Davari <public@fardjad.com>",
+  "license": "CC BY-NC 4.0",
+  "bugs": {
+    "url": "https://github.com/fardjad/dotfiles/issues"
+  },
+  "homepage": "https://github.com/fardjad/dotfiles#readme",
+  "devDependencies": {
+    "husky": "^7.0.4",
+    "prettier": "^2.6.2",
+    "prettier-plugin-sh": "^0.10.1"
+  }
+}
