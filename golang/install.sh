@@ -4,14 +4,14 @@ set -e
 
 source "$(dirname "$0")/../script/bootstrap.bash"
 
-if check_command brew; then
-  brew_install git
-  brew_install mercurial
-  brew_install bison
-else
+if ! check_command brew; then
   fail 'brew must be installed'
 fi
 
+brew_install git
+brew_install mercurial
+brew_install bison
+brew_install protobuf
 # Install a bootstrap version. It might not be needed but it doesn't hurt to have it anyways
 brew_install golang
 
@@ -23,7 +23,6 @@ if ! check_command "gvm"; then
 
   [ -s "$HOME/.gvm/scripts/gvm" ] && . "$HOME/.gvm/scripts/gvm"
 
-  GO_VERSION="go1.17.5"
-  gvm install "${GO_VERSION}" -pb -b
-  gvm use "${GO_VERSION}" --default
+  LATEST_GO_VERSION="$(curl -sSL 'https://go.dev/VERSION?m=text')"
+  gvm install "$LATEST_GO_VERSION" -pb -b && gvm use "$LATEST_GO_VERSION" --default
 fi
