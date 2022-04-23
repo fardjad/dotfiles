@@ -1,25 +1,22 @@
 " plugins
 call plug#begin('$HOME/.vim/plugged')
 
+Plug 'airblade/vim-gitgutter'
+Plug 'ap/vim-buftabline'
+Plug 'chriskempson/base16-vim'
+Plug 'christoomey/vim-tmux-navigator'
 Plug 'easymotion/vim-easymotion'
+Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
+Plug 'jeffkreeftmeijer/vim-numbertoggle'
+Plug 'jlanzarotta/bufexplorer'
+Plug 'mg979/vim-visual-multi', {'branch': 'master'}
+Plug 'prettier/vim-prettier', { 'do': 'npm install' }
+Plug 'rust-lang/rust.vim'
+Plug 'scrooloose/nerdtree'
+Plug 'takac/vim-hardtime'
+Plug 'tpope/vim-fugitive'
 Plug 'tpope/vim-sensible'
 Plug 'tpope/vim-surround'
-
-if !exists('g:vscode')
-  Plug 'airblade/vim-gitgutter'
-  Plug 'ap/vim-buftabline'
-  Plug 'chriskempson/base16-vim'
-  Plug 'christoomey/vim-tmux-navigator'
-  Plug 'fatih/vim-go', { 'do': ':GoUpdateBinaries' }
-  Plug 'jeffkreeftmeijer/vim-numbertoggle'
-  Plug 'jlanzarotta/bufexplorer'
-  Plug 'mg979/vim-visual-multi', {'branch': 'master'}
-  Plug 'prettier/vim-prettier', { 'do': 'npm install' }
-  Plug 'rust-lang/rust.vim'
-  Plug 'scrooloose/nerdtree'
-  Plug 'takac/vim-hardtime'
-  Plug 'tpope/vim-fugitive'
-endif
 
 if has('nvim')
   Plug 'L3MON4D3/LuaSnip'
@@ -41,18 +38,15 @@ endif
 call plug#end()
 
 source $HOME/.vim/basic.vim
+source $HOME/.vim/bufexplorer.vim
+source $HOME/.vim/buftabline.vim
+source $HOME/.vim/color.vim
 source $HOME/.vim/crontab.vim
 source $HOME/.vim/easymotion.vim
-
-if !exists('g:vscode')
-  source $HOME/.vim/bufexplorer.vim
-  source $HOME/.vim/buftabline.vim
-  source $HOME/.vim/color.vim
-  source $HOME/.vim/go.vim
-  source $HOME/.vim/hardtime.vim
-  source $HOME/.vim/nerdtree.vim
-  source $HOME/.vim/rust.vim
-endif
+source $HOME/.vim/go.vim
+source $HOME/.vim/hardtime.vim
+source $HOME/.vim/nerdtree.vim
+source $HOME/.vim/rust.vim
 
 if has('nvim')
   lua require('config-lsp')
