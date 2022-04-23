@@ -4,18 +4,16 @@ set -e
 
 source "$(dirname "$0")/../script/bootstrap.bash"
 
-if check_command brew; then
-  brew_install git
-else
+if ! check_command brew; then
   fail 'brew must be installed'
 fi
 
-export NVS_HOME="$HOME/.nvs"
+brew_install git
 
+export NVS_HOME="$HOME/.nvs"
 if [ ! -d "$NVS_HOME" ]; then
   git clone https://github.com/jasongin/nvs "$NVS_HOME"
   . "$NVS_HOME/nvs.sh" install
-
 else
   info 'nvs is already installed.'
 fi
