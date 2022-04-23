@@ -28,13 +28,12 @@ if ! check_command rvm; then
   source "$RVM/scripts/rvm"
 fi
 
-RUBY_VERSION="2.7.2"
 if is_mac; then
   rvm get stable --autolibs=homebrew
 else
   rvm get stable
 fi
-rvm install "ruby-${RUBY_VERSION}"
-rvm alias create default "${RUBY_VERSION}"
+rvm install ruby --latest
+rvm alias create default ruby --latest
 
 user "run rvm reload to use the newly installed ruby"
