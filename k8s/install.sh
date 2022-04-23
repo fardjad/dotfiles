@@ -13,18 +13,18 @@ if ! docker info &> /dev/null; then
   fail "docker engine is not ready! make sure it is running and $USER belongs to docker group"
 fi
 
+brew_install docker-compose
+DOCKER_CLI_PLUGINS_PATH="$HOME/.docker/cli-plugins"
+mkdir -p "$DOCKER_CLI_PLUGINS_PATH"
+ln -sfn "$(brew --prefix)/opt/docker-compose/bin/docker-compose" "$DOCKER_CLI_PLUGINS_PATH/docker-compose"
+
+brew_install kubernetes-cli
 brew_install minikube
 brew_install helm
-brew_install skaffold
-brew_install ksync
-
-brew_install docker-compose
-brew_install kompose
+brew_install fzf
 
 # krew
 info 'Installing krew...'
-
-brew_install fzf
 
 KREW_ROOT="$HOME/.krew"
 [ ! -d "$KREW_ROOT" ] && (
