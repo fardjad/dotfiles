@@ -29,6 +29,7 @@ export auto_answer_upgrade=true
 
 sdk update
 
-JAVA_VERSION="$(sdk ls java | grep -Ev 'local only' | awk -F '|' '{ print $6 }' | grep -Eo '11.*hs.adpt')"
+# install the latest version of Temurin (for more info, see: https://sdkman.io/jdks)
+JAVA_VERSION="$(sdk ls java | grep -Ev 'local only' | awk -F '|' '{ print $6 }' | grep '\-tem' | sort -r -V | head -n1)"
 sdk install java $JAVA_VERSION || true
 sdk default java $JAVA_VERSION
