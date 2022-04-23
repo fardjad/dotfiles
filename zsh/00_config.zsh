@@ -5,6 +5,8 @@ export CLICOLOR=true
 
 export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=238"
 
+export REPORTTIME=10
+
 autoload -U up-line-or-beginning-search
 autoload -U down-line-or-beginning-search
 

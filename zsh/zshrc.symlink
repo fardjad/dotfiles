@@ -7,9 +7,17 @@ export ZSH_DISABLE_COMPFIX="true"
 # versioned repo.
 [ -f ~/.localrc ] && . ~/.localrc
 
+# https://stackoverflow.com/a/70180134
+function sortByFilename {
+  local -a ary
+  printf -v ary '%s/%s' ${${argv:t}:^argv}
+  print -l ${${(n)ary}#*/}
+}
 # all of our zsh files
 typeset -U config_files
 config_files=($DOTFILES/*/*.zsh)
+config_files=($(sortByFilename $config_files))
+unset -f sortByFilename
 
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}; do

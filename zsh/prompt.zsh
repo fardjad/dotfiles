@@ -1,1 +1,0 @@
-export REPORTTIME=10
