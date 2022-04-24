@@ -84,8 +84,9 @@ lsp_installer.on_server_ready(function(server)
   }
 
   if server.name == 'denols' then
-    -- do not enable denols by default
-    return
+    opts.root_dir = util.root_pattern("deno.json", "deno.jsonc")
+  elseif server.name == 'tsserver' then
+    opts.root_dir = util.root_pattern("package.json")
   end
 
   server:setup(opts)
