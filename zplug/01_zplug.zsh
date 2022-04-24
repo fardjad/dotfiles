@@ -18,6 +18,3 @@ if ! zplug check; then
 fi
 
 zplug load
-
-base16_eighties
-fast-theme -q HOME:overlay
