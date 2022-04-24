@@ -13,11 +13,18 @@ function sortByFilename {
   printf -v ary '%s/%s' ${${argv:t}:^argv}
   print -l ${${(n)ary}#*/}
 }
-# all of our zsh files
+
 typeset -U config_files
-config_files=($DOTFILES/*/*.zsh)
+
+setopt extended_glob
+config_files=($DOTFILES/^(node_modules|adocs|docs)*/*.zsh)
+unsetopt extended_glob
+
 config_files=($(sortByFilename $config_files))
 unset -f sortByFilename
+
+# filter out disabled directories
+config_files=(${config_files:#*.disable*/*})
 
 # load the path files
 for file in ${(M)config_files:#*/path.zsh}; do
