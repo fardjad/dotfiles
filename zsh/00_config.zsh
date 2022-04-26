@@ -1,10 +1,5 @@
 export TERM="xterm-256color"
 
-export LSCOLORS='exfxcxdxbxegedabagacad'
-export CLICOLOR=true
-
-export ZSH_AUTOSUGGEST_HIGHLIGHT_STYLE="fg=238"
-
 export REPORTTIME=10
 
 autoload -U up-line-or-beginning-search
@@ -34,6 +29,8 @@ setopt HIST_IGNORE_DUPS
 setopt HIST_IGNORE_SPACE
 setopt HIST_VERIFY
 setopt HIST_EXPIRE_DUPS_FIRST
+
+zstyle ':completion:*' matcher-list '' 'm:{a-zA-Z}={A-Za-z}' 'r:|[._-]=* r:|=*' 'l:|=* r:|=*'
 
 zle -N up-line-or-beginning-search
 zle -N down-line-or-beginning-search
@@ -69,5 +66,3 @@ bindkey '^?' backward-delete-char
 
 # delete word with ctrl+backspace
 bindkey '^[[3;5~' backward-delete-word
-
-bindkey '^R' history-incremental-search-backward
