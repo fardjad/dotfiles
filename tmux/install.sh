@@ -12,5 +12,5 @@ fi
 
 if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
-  info 'run tmux and press prefix+I to install the plugins'
+  user 'run tmux and press prefix+I to install the plugins'
 fi

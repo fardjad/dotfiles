@@ -27,7 +27,7 @@ check_command() {
 brew_install() {
   if ! brew ls --versions "$1" > /dev/null; then
     info "installing $1..."
-    brew install "$1" || fail "error installing $1"
+    brew install "$1" > /dev/null || fail "error installing $1"
   else
     success "$1 is already installed"
   fi
@@ -36,7 +36,7 @@ brew_install() {
 brew_cask_install() {
   if ! brew ls --cask --versions "$1" > /dev/null 2>&1; then
     info "installing $1..."
-    brew install --cask "$1" || fail "error installing $1"
+    brew install --cask "$1" > /dev/null || fail "error installing $1"
   else
     success "$1 is already installed"
   fi
@@ -45,7 +45,7 @@ brew_cask_install() {
 brew_tap() {
   if ! brew tap | grep -q "$1" > /dev/null; then
     info "tapping $1..."
-    brew tap "$1" || fail "error tapping $1"
+    brew tap "$1" > /dev/null || fail "error tapping $1"
   else
     success "$1 is already tapped"
   fi

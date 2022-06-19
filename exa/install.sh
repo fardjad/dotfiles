@@ -9,4 +9,4 @@ if ! check_command brew; then
 fi
 
 brew_install exa
-info "it's recommended to install one of the patched fonts available at https://www.nerdfonts.com/font-downloads"
+user "it's recommended to install one of the patched fonts available at https://www.nerdfonts.com/font-downloads"

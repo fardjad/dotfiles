@@ -27,9 +27,9 @@ fi
 export sdkman_auto_answer=true
 export auto_answer_upgrade=true
 
-sdk update
+sdk update > /dev/null
 
 # install the latest version of Temurin (for more info, see: https://sdkman.io/jdks)
 JAVA_VERSION="$(sdk ls java | grep -Ev 'local only' | awk -F '|' '{ print $6 }' | grep '\-tem' | sort -r -V | head -n1)"
-sdk install java $JAVA_VERSION || true
-sdk default java $JAVA_VERSION
+sdk install java $JAVA_VERSION > /dev/null || true
+sdk default java $JAVA_VERSION > /dev/null
