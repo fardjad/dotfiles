@@ -27,3 +27,5 @@ if ! check_command "node"; then
   nvs link lts
   nvs use lts
 fi
+
+corepack enable
