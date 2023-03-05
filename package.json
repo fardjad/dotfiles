@@ -21,11 +21,11 @@
   },
   "homepage": "https://github.com/fardjad/dotfiles#readme",
   "devDependencies": {
-    "husky": "^7.0.4",
-    "prettier": "^2.6.2",
-    "prettier-plugin-sh": "^0.10.1"
+    "husky": "^8.0.3",
+    "prettier": "^2.8.4",
+    "prettier-plugin-sh": "^0.12.8"
   },
   "dependencies": {
-    "ascaid": "^1.5.0"
+    "ascaid": "^1.7.47"
   }
 }

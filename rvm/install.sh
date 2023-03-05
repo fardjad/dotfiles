@@ -2,6 +2,7 @@
 
 set -e
 
+# shellcheck source=../script/bootstrap.bash
 source "$(dirname "$0")/../script/bootstrap.bash"
 
 function install_keys() {
@@ -15,25 +16,30 @@ function install_keys() {
     exit 0
   fi
 
-  curl -sSL https://rvm.io/mpapis.asc | gpg --import -
-  curl -sSL https://rvm.io/pkuczynski.asc | gpg --import -
+  gpg --keyserver keyserver.ubuntu.com --recv-keys 409B6B1796C275462A1703113804BB82D39DC0E3 7D2BAF1CF37B13E2069D6956105BD0E739499BDB
 }
+
+RVM="$HOME/.rvm"
 
 if ! check_command rvm; then
   install_keys
-  RVM="$HOME/.rvm"
   [ -d "$RVM" ] && rm -rf "$RVM"
 
   \curl -sSL https://get.rvm.io | bash -s -- --ignore-dotfiles
-  source "$RVM/scripts/rvm"
 fi
+
+# shellcheck source=/dev/null
+source "$RVM/scripts/rvm"
 
 if is_mac; then
   rvm get stable --autolibs=homebrew
 else
   rvm get stable
 fi
-rvm install ruby --latest
-rvm alias create default ruby --latest
+
+# for some reason --latest doesn't select the newest version
+VERSION="$(rvm list remote | grep -oE 'ruby-[0-9]+.*' | sort -r --version-sort | head -n1)"
+rvm install ruby "$VERSION" --binary
+rvm use "$VERSION" --install --default --create
 
 user "run rvm reload to use the newly installed ruby"

@@ -20,3 +20,5 @@ if [ ! -d "$ZPLUG_HOME" ]; then
 else
   info 'zplug is already installed.'
 fi
+
+user "run 'rm $ZPLUG_HOME/repos/zsh-users/zsh-autosuggestions/.ruby-version' to remove the ruby version nag message on shell startup. Alternatively, install the missing ruby version with rvm"
