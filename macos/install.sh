@@ -34,13 +34,13 @@ github
 iterm2
 karabiner-elements
 keka
-lens
 lepton
 menumeters
 mongodb-compass
 moom
 ngrok
 obs
+openlens
 osxfuse
 pastebot
 postman
