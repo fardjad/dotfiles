@@ -1,5 +1,3 @@
-:nofooter:
-
 == Fardjad's dotfiles
 
 === Synopsis
@@ -12,6 +10,10 @@ https://www.apple.com/macos[macOS] and https://ubuntu.com/wsl[Ubuntu on WSL].
 It comes with an automated installer script and leverages 
 https://brew.sh[homebrew] to install packages on macOS and various Linux 
 distributions.
+
+=== Included Tools
+
+list-tools::[]
 
 === Installation
 
@@ -43,6 +45,15 @@ In order to install the dotfiles run the following command in a bash shell:
 [source,bash]
 ....
 git clone https://github.com/fardjad/dotfiles.git ~/.dotfiles && ~/.dotfiles/script/setup
+....
+
+=== Updates
+
+[source,bash]
+....
+cd $DOTFILES
+git pull origin master # make sure the working tree is clean before running this command
+./script/setup
 ....
 
 === OS Specific Notes

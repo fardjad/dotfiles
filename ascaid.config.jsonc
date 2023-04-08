@@ -1,0 +1,10 @@
+{
+  "$schema": "https://raw.githubusercontent.com/fardjad/node-ascaid/master/ascaid.config.schema.json",
+  "extensions": ["./adocs/_extensions/list-tools.mjs"],
+  "asciidoctorOptions": {
+    // https://docs.asciidoctor.org/asciidoc/latest/attributes/document-attributes-ref/
+    "attributes": {
+      "nofooter": true
+    }
+  }
+}

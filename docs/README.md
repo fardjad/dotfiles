@@ -30,6 +30,72 @@ It comes with an automated installer script and leverages [homebrew](https://bre
 
 <div class="sect2">
 
+### Included Tools
+
+<div id="header">
+
+</div>
+
+<div id="content">
+
+<div id="preamble">
+
+<div class="sectionbody">
+
+<div class="ulist">
+
+- [bash](/bash)
+
+- [bat](/bat)
+
+- [brew](/brew)
+
+- [brew-cu](/brew-cu)
+
+- [deno](/deno)
+
+- [exa](/exa)
+
+- [golang](/golang)
+
+- [k8s](/k8s)
+
+- [mcfly](/mcfly)
+
+- [nodejs](/nodejs)
+
+- [pyenv](/pyenv)
+
+- [rust](/rust)
+
+- [rvm](/rvm)
+
+- [sdkman](/sdkman)
+
+- [starship](/starship)
+
+- [tldr](/tldr)
+
+- [tmux](/tmux)
+
+- [vim](/vim)
+
+- [zplug](/zplug)
+
+- [zsh](/zsh)
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
 ### Installation
 
 <div class="paragraph">
@@ -58,6 +124,26 @@ In order to install the dotfiles run the following command in a bash shell:
 
 ```highlight
 git clone https://github.com/fardjad/dotfiles.git ~/.dotfiles && ~/.dotfiles/script/setup
+```
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect2">
+
+### Updates
+
+<div class="listingblock">
+
+<div class="content">
+
+```highlight
+cd $DOTFILES
+git pull origin master # make sure the working tree is clean before running this command
+./script/setup
 ```
 
 </div>

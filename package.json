@@ -26,6 +26,7 @@
     "prettier-plugin-sh": "^0.12.8"
   },
   "dependencies": {
-    "ascaid": "^1.8.5"
+    "ascaid": "^1.8.6",
+    "make-synchronous": "^1.0.0"
   }
 }
