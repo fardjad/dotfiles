@@ -158,7 +158,7 @@ git pull origin master # make sure the working tree is clean before running this
 
 <div class="ulist">
 
-- \[macOS only, optional\] In order to set macOS defaults run the following:
+- (macOS only, optional) In order to set macOS defaults run the following:
 
 </div>
 
@@ -177,6 +177,20 @@ git pull origin master # make sure the working tree is clean before running this
 <div class="ulist">
 
 - (macOS only, optional) Configure iTerm2 to load preferences from `~/.dotfiles/macos/iterm2` directory.
+
+- (macOS only, Apple Silicon) Run the following to enable Rosetta:
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+```highlight
+softwareupdate --install-rosetta
+```
+
+</div>
 
 </div>
 
