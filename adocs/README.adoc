@@ -58,7 +58,7 @@ git pull origin master # make sure the working tree is clean before running this
 
 === OS Specific Notes
 
-* ++[++macOS only, optional++]++ In order to set macOS defaults run the following:
+* (macOS only, optional) In order to set macOS defaults run the following:
 
 [source,bash]
 ....
@@ -67,6 +67,13 @@ git pull origin master # make sure the working tree is clean before running this
 
 * (macOS only, optional) Configure iTerm2 to load preferences from 
 `~/.dotfiles/macos/iterm2` directory.
+
+* (macOS only, Apple Silicon) Run the following to enable Rosetta:
+
+[source, bash]
+....
+softwareupdate --install-rosetta
+....
 
 === Credits
 
