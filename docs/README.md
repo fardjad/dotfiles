@@ -66,9 +66,9 @@ It comes with an automated installer script and leverages [homebrew](https://bre
 
 - [pyenv](/pyenv)
 
-- [rust](/rust)
+- [rbenv](/rbenv)
 
-- [rvm](/rvm)
+- [rust](/rust)
 
 - [sdkman](/sdkman)
 
