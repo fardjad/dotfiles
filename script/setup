@@ -32,7 +32,7 @@ run_installers() {
     find -H "$DOTFILES" -maxdepth 2 -name 'install.sh' -not -path '*.git*' |
         while read -r installer; do
             info "running ${installer}..."
-            bash -c "$installer"
+            </dev/null bash -c "$installer"
         done
 }
 
