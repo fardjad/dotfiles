@@ -20,6 +20,12 @@ fail() {
   exit
 }
 
+check_brew_doctor() {
+  if ! brew doctor > /dev/null; then
+    user "brew doctor is not happy!"
+  fi
+}
+
 check_command() {
   command -v "$1" > /dev/null 2>&1
 }
