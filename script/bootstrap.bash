@@ -2,6 +2,8 @@ pushd "$(dirname "$0")/.." > /dev/null
 export DOTFILES=$(pwd -P)
 popd > /dev/null
 
+export NONINTERACTIVE=1
+
 info() {
   printf "\r  [ \033[00;34m..\033[0m ] $1\n"
 }
@@ -18,12 +20,6 @@ fail() {
   printf "\r\033[2K  [\033[0;31mFAIL\033[0m] $1\n"
   echo ''
   exit
-}
-
-check_brew_doctor() {
-  if ! brew doctor > /dev/null; then
-    user "brew doctor is not happy!"
-  fi
 }
 
 check_command() {
@@ -59,4 +55,8 @@ brew_tap() {
 
 is_mac() {
   [[ "$OSTYPE" == "darwin"* ]]
+}
+
+is_codespaces() {
+  [[ -n "$CODESPACES" ]]
 }
