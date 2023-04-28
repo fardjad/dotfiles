@@ -1,0 +1,10 @@
+mafredri/zsh-async
+
+ohmyzsh/ohmyzsh path:plugins/sudo
+zpm-zsh/ls kind:defer
+zsh-users/zsh-autosuggestions
+zsh-users/zsh-completions
+zsh-users/zsh-history-substring-search
+
+zdharma-continuum/fast-syntax-highlighting
+chriskempson/base16-shell
