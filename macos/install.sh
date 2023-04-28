@@ -26,6 +26,7 @@ done
 cask_packages="
 alfred
 appcleaner
+brewlet
 cryptomator
 deepl
 ferdium
