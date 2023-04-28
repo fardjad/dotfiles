@@ -4,6 +4,51 @@ set -e
 
 source "$(dirname "$0")/bootstrap.bash"
 
+prepare_codespaces() {
+  if ! is_codespaces; then
+    return 0
+  fi
+
+  test -d ~/.linuxbrew && eval "$(~/.linuxbrew/bin/brew shellenv)"
+  test -d /home/linuxbrew/.linuxbrew && eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+  if check_command brew; then
+    return 0
+  fi
+
+  info 'running in codespaces, installing brew'
+
+  /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+  eval "$(/home/linuxbrew/.linuxbrew/bin/brew shellenv)"
+
+  if check_command apt-get; then
+    sudo apt-get update
+    sudo apt-get install -y build-essential
+
+    LOCALE="en_US.UTF-8"
+    sudo update-locale "LANG=$LOCALE"
+    sudo locale-gen --purge "$LOCLE"
+    sudo dpkg-reconfigure --frontend noninteractive locales
+  else
+    fail 'unsupported distro package manager'
+  fi
+
+  brew_install gcc
+}
+
+check_dependencies() {
+  check_command git || fail 'git is not installed'
+  check_command curl || fail 'curl is not installed'
+  check_command bash || fail 'bash is not installed'
+  check_command sudo || fail 'sudo is not installed'
+}
+
+check_brew_doctor() {
+  if ! brew doctor > /dev/null; then
+    user "brew doctor is not happy!"
+  fi
+}
+
 link_file() {
   if [ -e "$2" ]; then
     if [ "$(readlink "$2")" = "$1" ]; then
@@ -36,8 +81,10 @@ run_installers() {
     done
 }
 
-link_dotfiles
+check_dependencies
+prepare_codespaces
 check_brew_doctor
+link_dotfiles
 run_installers
 
 echo '  All done! Make sure to check the logs for errors.'
