@@ -1,7 +1,4 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
-[ruby]
-detect_variables=[]
-
 [aws]
 disabled=true
