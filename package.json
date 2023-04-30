@@ -4,8 +4,6 @@
   "private": true,
   "description": "My dotfiles for macOS and Linux",
   "scripts": {
-    "ascaid:gfm": "ascaid adoc-to-gfm ./adocs ./docs",
-    "ascaid:serve": "ascaid serve",
     "fix": "prettier --ignore-path .gitignore --write .",
     "prepare": "husky install",
     "test": "prettier --ignore-path .gitignore --check ."
@@ -24,9 +22,5 @@
     "husky": "^8.0.3",
     "prettier": "^2.8.7",
     "prettier-plugin-sh": "^0.12.8"
-  },
-  "dependencies": {
-    "ascaid": "^1.8.6",
-    "make-synchronous": "^1.0.0"
   }
 }
