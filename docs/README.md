@@ -44,13 +44,9 @@ It comes with an automated installer script and leverages [homebrew](https://bre
 
 <div class="ulist">
 
-- [antidote](/antidote)
-
 - [bash](/bash)
 
 - [bat](/bat)
-
-- [brew](/brew)
 
 - [brew-cu](/brew-cu)
 

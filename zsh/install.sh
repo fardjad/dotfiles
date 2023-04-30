@@ -6,6 +6,7 @@ source "$(dirname "$0")/../script/bootstrap.bash"
 
 if check_command brew; then
   brew_install zsh
+  brew_install antidote
 else
   fail 'brew must be installed'
 fi
@@ -22,4 +23,6 @@ else
   sudo chsh $(whoami) -s "$ZSH_PATH"
 fi
 
+link_file "./fsh.symlink" "$HOME/.fsh"
+link_file "./zsh_plugins.txt.symlink" "$HOME/.zsh_plugins.txt"
 link_file "./zshrc.symlink" "$HOME/.zshrc"

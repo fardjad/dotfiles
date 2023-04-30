@@ -1,7 +1,17 @@
 # shortcut to this dotfiles path is $DOTFILES
 export DOTFILES="$HOME/.dotfiles"
 
+# Linux
+[ -d /home/linuxbrew/.linuxbrew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
+# macOS on Apple Silicon
+[ -f /opt/homebrew/bin/brew ] && eval $(/opt/homebrew/bin/brew shellenv)
+
+export PATH="$(brew --prefix)/sbin:$PATH"
+
 export ZSH_DISABLE_COMPFIX="true"
+
+source "$(brew --prefix antidote)/share/antidote/antidote.zsh"
+antidote load
 
 # use .localrc for SUPER SECRET CRAP that you don't want in your public, 
 # versioned repo.

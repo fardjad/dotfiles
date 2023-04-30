@@ -65,10 +65,13 @@ link_file() {
   pushd "$(dirname "$0")" > /dev/null
 
   src="$(readlink -f "$1")"
-  dst="$(readlink -f "$2")"
+  if [ $? -ne 0 ]; then
+    fail "could not find $1"
+  fi
+  dst="$2"
 
   if [ -e "$2" ]; then
-    if [ "$src" = "$dst" ]; then
+    if [ "$src" = "$(readlink "$dst")" ]; then
       success "skipped $src"
       return 0
     else
