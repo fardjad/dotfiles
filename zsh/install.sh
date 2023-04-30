@@ -21,3 +21,5 @@ if is_mac; then
 else
   sudo chsh $(whoami) -s "$ZSH_PATH"
 fi
+
+link_file "./zshrc.symlink" "$HOME/.zshrc"

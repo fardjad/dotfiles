@@ -18,3 +18,6 @@ fi
 if ! is_mac && ! check_command xclip; then
   user 'for clipboard integration, make sure to have xclip installed'
 fi
+
+link_file "./tmux.conf.symlink" "$HOME/.tmux.conf"
+link_file "./tmux.symlink" "$HOME/.tmux"

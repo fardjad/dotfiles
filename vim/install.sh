@@ -22,6 +22,9 @@ fi
 
 user 'run "vim +PlugInstall +qall" to install the plugins'
 
+link_file "./vim.symlink" "$HOME/.vim"
+link_file "./vimrc.symlink" "$HOME/.vimrc"
+
 # Neovim
 brew_install nvim
 brew_install ripgrep

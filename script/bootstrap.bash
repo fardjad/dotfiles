@@ -60,3 +60,24 @@ is_mac() {
 is_codespaces() {
   [[ -n "$CODESPACES" ]]
 }
+
+link_file() {
+  pushd "$(dirname "$0")" > /dev/null
+
+  src="$(readlink -f "$1")"
+  dst="$(readlink -f "$2")"
+
+  if [ -e "$2" ]; then
+    if [ "$src" = "$dst" ]; then
+      success "skipped $src"
+      return 0
+    else
+      mv "$dst" "$dst.backup"
+      success "moved $dst to $dst.backup"
+    fi
+  fi
+  ln -sf "$src" "$dst"
+  success "linked $src to $dst"
+
+  popd > /dev/null
+}

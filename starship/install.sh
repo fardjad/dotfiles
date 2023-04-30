@@ -9,3 +9,5 @@ if ! check_command brew; then
 fi
 
 brew_install starship
+
+link_file "./starship.symlink" "$HOME/.starship"

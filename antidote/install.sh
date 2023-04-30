@@ -12,3 +12,6 @@ brew_install git
 brew_install zsh
 
 brew_install antidote
+
+link_file "./fsh.symlink" "$HOME/.fsh"
+link_file "./zsh_plugins.txt.symlink" "$HOME/.zsh_plugins.txt"
