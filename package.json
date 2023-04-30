@@ -4,9 +4,9 @@
   "private": true,
   "description": "My dotfiles for macOS and Linux",
   "scripts": {
-    "fix": "prettier --ignore-path .gitignore --write .",
+    "fix": "prettier --ignore-path .gitignore --write . && stylua --config-path astronvim/.stylua.toml --glob '**/*.lua' astronvim/",
     "prepare": "husky install",
-    "test": "prettier --ignore-path .gitignore --check ."
+    "test": "prettier --ignore-path .gitignore --check . && stylua --config-path astronvim/.stylua.toml --check --glob '**/*.lua' astronvim/"
   },
   "repository": {
     "type": "git",
@@ -19,6 +19,7 @@
   },
   "homepage": "https://github.com/fardjad/dotfiles#readme",
   "devDependencies": {
+    "@johnnymorganz/stylua-bin": "^0.17.1",
     "husky": "^8.0.3",
     "prettier": "^2.8.7",
     "prettier-plugin-sh": "^0.12.8"
