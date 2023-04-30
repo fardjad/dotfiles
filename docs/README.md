@@ -114,7 +114,7 @@ The following software packages are required to run the setup script.
 
 <div class="paragraph">
 
-In order to install the dotfiles run the following command in a bash shell:
+Make sure the dependencies are installed, and clone the repository:
 
 </div>
 
@@ -123,28 +123,80 @@ In order to install the dotfiles run the following command in a bash shell:
 <div class="content">
 
 ```highlight
-git clone https://github.com/fardjad/dotfiles.git ~/.dotfiles && ~/.dotfiles/script/setup
+git clone https://github.com/fardjad/dotfiles.git ~/.dotfiles
 ```
 
 </div>
 
 </div>
 
+<div class="sect3">
+
+#### Install Everything
+
+<div class="paragraph">
+
+You can choose to install all of the tools by running the following command:
+
 </div>
-
-<div class="sect2">
-
-### Updates
 
 <div class="listingblock">
 
 <div class="content">
 
 ```highlight
-cd $DOTFILES
-git pull origin master # make sure the working tree is clean before running this command
-./script/setup
+~/.dotfiles/script/setup
 ```
+
+</div>
+
+</div>
+
+</div>
+
+<div class="sect3">
+
+#### Install Individual Tools
+
+<div class="paragraph">
+
+If you don’t want to install everything, you can run the installer script of each tool individually. For example, to install `nodejs`, you can run:
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+```highlight
+~/.dotfiles/nodejs/install.sh
+```
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+Keep in mind that these dotfiles are designed to work with zsh, so it’s highly recommended that you install zsh too:
+
+</div>
+
+<div class="listingblock">
+
+<div class="content">
+
+```highlight
+~/.dotfiles/zsh/install.sh
+```
+
+</div>
+
+</div>
+
+<div class="paragraph">
+
+Running the installer scripts multiple times is safe, and in most cases it will update the installed packages to the latest version.
 
 </div>
 

@@ -40,21 +40,42 @@ The following software packages are required to run the setup script.
 |Required by the installer script to run some commands as root
 |===
 
-In order to install the dotfiles run the following command in a bash shell:
+Make sure the dependencies are installed, and clone the repository:
 
 [source,bash]
 ....
-git clone https://github.com/fardjad/dotfiles.git ~/.dotfiles && ~/.dotfiles/script/setup
+git clone https://github.com/fardjad/dotfiles.git ~/.dotfiles
 ....
 
-=== Updates
+==== Install Everything
+
+You can choose to install all of the tools by running the following command:
 
 [source,bash]
 ....
-cd $DOTFILES
-git pull origin master # make sure the working tree is clean before running this command
-./script/setup
+~/.dotfiles/script/setup
 ....
+
+==== Install Individual Tools
+
+If you don't want to install everything, you can run the installer script of 
+each tool individually. For example, to install `nodejs`, you can run:
+
+[source,bash]
+....
+~/.dotfiles/nodejs/install.sh
+....
+
+Keep in mind that these dotfiles are designed to work with zsh, so it's highly 
+recommended that you install zsh too:
+
+[source,bash]
+....
+~/.dotfiles/zsh/install.sh
+....
+
+Running the installer scripts multiple times is safe, and in most cases it will 
+update the installed packages to the latest version.
 
 === OS Specific Notes
 
