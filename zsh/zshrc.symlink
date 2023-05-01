@@ -1,5 +1,5 @@
 # shortcut to this dotfiles path is $DOTFILES
-export DOTFILES="$HOME/.dotfiles"
+export DOTFILES="$(readlink -f $(dirname $(readlink -f $(print -P %N)))/..)"
 
 # Linux
 [ -d /home/linuxbrew/.linuxbrew ] && eval $(/home/linuxbrew/.linuxbrew/bin/brew shellenv)
