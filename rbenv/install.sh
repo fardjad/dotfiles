@@ -5,8 +5,7 @@ set -e
 # shellcheck source=../script/bootstrap.bash
 source "$(dirname "$0")/../script/bootstrap.bash"
 
-brew_install rbenv
-brew_install ruby-build
+brew_bundle_install
 
 if is_codespaces; then
   # TODO: figure out how to install ruby in codespaces

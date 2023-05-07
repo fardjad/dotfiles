@@ -3,6 +3,7 @@ export DOTFILES=$(pwd -P)
 popd > /dev/null
 
 export NONINTERACTIVE=1
+export HOMEBREW_BUNDLE_NO_LOCK=1
 
 info() {
   printf "\r  [ \033[00;34m..\033[0m ] $1\n"
@@ -26,31 +27,18 @@ check_command() {
   command -v "$1" > /dev/null 2>&1
 }
 
-brew_install() {
-  if ! brew ls --versions "$1" > /dev/null; then
-    info "installing $1..."
-    brew install "$1" > /dev/null || fail "error installing $1"
-  else
-    success "$1 is already installed"
+brew_bundle_install() {
+  if ! check_command brew; then
+    fail 'brew must be installed'
   fi
-}
 
-brew_cask_install() {
-  if ! brew ls --cask --versions "$1" > /dev/null 2>&1; then
-    info "installing $1..."
-    brew install --cask "$1" --force > /dev/null || fail "error installing $1"
-  else
-    success "$1 is already installed"
-  fi
-}
+  pushd "$(dirname "$0")" > /dev/null
 
-brew_tap() {
-  if ! brew tap | grep -q "$1" > /dev/null; then
-    info "tapping $1..."
-    brew tap "$1" > /dev/null || fail "error tapping $1"
-  else
-    success "$1 is already tapped"
-  fi
+  brew bundle install -q "$@" \
+    | sed '/^Homebrew Bundle complete.*/d' \
+    | sed 's/^/  [brew] /'
+
+  popd > /dev/null
 }
 
 is_mac() {

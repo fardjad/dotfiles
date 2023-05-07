@@ -4,11 +4,7 @@ set -e
 
 source "$(dirname "$0")/../script/bootstrap.bash"
 
-if ! check_command brew; then
-  fail 'brew must be installed'
-fi
-
-brew_install git
+brew_bundle_install
 
 export NVS_HOME="$HOME/.nvs"
 if [ ! -d "$NVS_HOME" ]; then

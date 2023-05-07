@@ -9,49 +9,6 @@ if ! is_mac; then
   exit 0
 fi
 
-if ! check_command "brew"; then
-  fail "brew must be installed!"
-fi
-
-taps="
-homebrew/cask-fonts
-buo/cask-upgrade
-homebrew/cask-versions
-"
-for tap in $taps; do
-  brew_tap "$tap"
-done
-
-# brew list --cask -1
-cask_packages="
-alfred
-appcleaner
-brewlet
-cryptomator
-deepl
-ferdium
-font-fira-code-nerd-font
-github
-iterm2
-keka
-linearmouse
-macfuse
-menumeters
-mongodb-compass
-moom
-mountain-duck
-ngrok
-notion
-obs
-openlens
-pastebot
-plex
-postman
-visual-studio-code
-vlc
-"
-for package in $cask_packages; do
-  brew_cask_install "$package"
-done
+brew_bundle_install
 
 user "run $DOTFILES/macos/setup-macos.sh to setup macOS"

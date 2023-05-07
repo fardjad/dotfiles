@@ -4,13 +4,7 @@ set -e
 
 source "$(dirname "$0")/../script/bootstrap.bash"
 
-if check_command brew; then
-  brew_install curl
-  brew_install zip
-  brew_install unzip
-else
-  fail 'brew must be installed'
-fi
+brew_bundle_install
 
 export SDKMAN_DIR="$HOME/.sdkman"
 

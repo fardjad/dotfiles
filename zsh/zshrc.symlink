@@ -27,7 +27,7 @@ function sortByFilename {
 typeset -U config_files
 
 setopt extended_glob
-config_files=($DOTFILES/^(node_modules|adocs|docs)*/*.zsh)
+config_files=($DOTFILES/^(node_modules|script)*/*.zsh)
 unsetopt extended_glob
 
 config_files=($(sortByFilename $config_files))
@@ -47,16 +47,11 @@ for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
 done
 
 autoload -Uz compinit
-typeset -i updated_at=$(date +'%j' -r ~/.zcompdump 2>/dev/null || stat -f '%Sm' -t '%j' ~/.zcompdump 2>/dev/null)
-if [ $(date +'%j') != $updated_at ]; then
-  compinit -i
-else
-  compinit -C -i
-fi
+compinit
 
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}; do
   source "$file"
 done
 
-unset config_files updated_at
+unset config_files

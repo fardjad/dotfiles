@@ -4,12 +4,7 @@ set -e
 
 source "$(dirname "$0")/../script/bootstrap.bash"
 
-if check_command brew; then
-  brew_install zsh
-  brew_install antidote
-else
-  fail 'brew must be installed'
-fi
+brew_bundle_install
 
 ZSH_PATH="$(brew --prefix)/bin/zsh"
 if ! grep -q "$ZSH_PATH" /etc/shells; then

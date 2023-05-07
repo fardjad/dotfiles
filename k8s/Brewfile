@@ -1,0 +1,6 @@
+brew "docker"
+brew "docker-compose"
+brew "kubernetes-cli"
+brew "minikube"
+brew "helm"
+brew "fzf"
