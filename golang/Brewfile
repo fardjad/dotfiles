@@ -1,4 +1,3 @@
-brew "git"
 brew "mercurial"
 brew "bison"
 brew "protobuf"
