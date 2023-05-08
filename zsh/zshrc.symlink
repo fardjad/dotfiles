@@ -47,7 +47,7 @@ for file in ${${config_files:#*/path.zsh}:#*/completion.zsh}; do
 done
 
 autoload -Uz compinit
-compinit
+compinit -u
 
 # load every completion after autocomplete loads
 for file in ${(M)config_files:#*/completion.zsh}; do
