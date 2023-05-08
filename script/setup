@@ -33,7 +33,7 @@ prepare_codespaces() {
     fail 'unsupported distro package manager'
   fi
 
-  brew_install gcc
+  brew install gcc
 }
 
 check_dependencies() {
