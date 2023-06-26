@@ -1,0 +1,3 @@
+brew "awk"
+brew "koekeishiya/formulae/yabai"
+brew "koekeishiya/formulae/skhd"
