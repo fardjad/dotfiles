@@ -69,4 +69,6 @@ resize < space: yabai -m window --toggle split
 
 # commands
 alt - return: open -a /Applications/iTerm.app
-shift + lctrl + alt - r:  yabai --restart-service
+shift + ctrl + alt - r:  yabai --restart-service
+shift + ctrl + alt - y:  yabai --start-service
+shift + ctrl + alt - q:  yabai --stop-service
