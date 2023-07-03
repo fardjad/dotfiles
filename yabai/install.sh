@@ -28,5 +28,10 @@ SKHD_CONFIG_PATH="$HOME/.config/skhd/skhdrc"
 mkdir -p "$(dirname "$SKHD_CONFIG_PATH")"
 link_file "./skhdrc.symlink" "$SKHD_CONFIG_PATH" || true
 
+SKETCHYBAR_CONFIG_PATH="$HOME/.config/sketchybar"
+mkdir -p "$(dirname "$SKETCHYBAR_CONFIG_PATH")"
+link_file "./sketchybar.symlink" "$SKETCHYBAR_CONFIG_PATH" || true
+
 user "run 'skhd --start-service' and grant it accessibility permissions"
 user "run 'yabai --start-service' and grant it accessibility permissions"
+user "run 'brew services start sketchybar'"
