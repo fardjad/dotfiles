@@ -21,9 +21,9 @@ sketchybar --bar height=32        \
 # https://felixkratz.github.io/SketchyBar/config/items
 
 sketchybar --default \
-                     icon.font="Hack Nerd Font:Bold:16.0"  \
+                     icon.font="FiraCode Nerd Font:Bold:16.0"  \
                      icon.color=0xffffffff                 \
-                     label.font="Hack Nerd Font:Bold:16.0" \
+                     label.font="FiraCode Nerd Font:Bold:16.0" \
                      label.color=0xffffffff                \
                      padding_left=5                        \
                      padding_right=5                       \
