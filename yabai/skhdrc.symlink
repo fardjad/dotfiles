@@ -18,7 +18,7 @@ alt - f: yabai -m window --toggle zoom-fullscreen
 shift + alt - f:  yabai -m window --toggle native-fullscreen
 
 # toggle tiling / floating
-alt - space: yabai -m window --toggle float
+shift + alt - space: yabai -m window --toggle float
 
 # switch to workspace
 alt - 1: yabai -m space --focus 1
@@ -72,3 +72,5 @@ alt - return: open -a /Applications/iTerm.app
 shift + ctrl + alt - r:  yabai --restart-service
 shift + ctrl + alt - y:  yabai --start-service
 shift + ctrl + alt - q:  yabai --stop-service
+
+alt - 0x2A : yabai -m window --toggle topmost; yabai -m window --toggle topmost; yabai -m window --layer below

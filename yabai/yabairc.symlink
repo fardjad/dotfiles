@@ -21,14 +21,14 @@ yabai -m config right_padding 5
 yabai -m config window_gap 5
 
 # Mouse support
-yabai -m config mouse_modifier alt
+yabai -m config mouse_modifier cmd
 yabai -m config mouse_action1 move
 yabai -m config mouse_action2 resize
 yabai -m config mouse_follows_focus off
 yabai -m config focus_follows_mouse off
 
 # Window modifications
-yabai -m config window_topmost on
+yabai -m config window_topmost off
 yabai -m config window_shadow float
 yabai -m config window_opacity on
 yabai -m config active_window_opacity 1.00
@@ -60,6 +60,6 @@ yabai -m rule --add app="^Spotify$" space=media
 
 # Signals
 # https://github.com/koekeishiya/yabai/issues/1317
-yabai -m signal --add event=window_created action='yabai -m query --windows --window $YABAI_WINDOW_ID | jq -er ".\"can-resize\" or .\"is-floating\"" || yabai -m window $YABAI_WINDOW_ID --toggle float'
+yabai -m signal --add event=window_created action='yabai -m query --windows --window $YABAI_WINDOW_ID | jq -er ".\"can-resize\" or .\"is-floating\"" || yabai -m window $YABAI_WINDOW_ID --toggle float --layer=above'
 yabai -m signal --add event=window_destroyed active=yes action="yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null"
 yabai -m signal --add event=window_minimized active=yes action="if \$(yabai -m query --windows --window \$YABAI_WINDOW_ID | jq -r '.\"is-floating\"'); then yabai -m query --windows --window &> /dev/null || yabai -m window --focus mouse &> /dev/null || yabai -m window --focus \$(yabai -m query --windows --space | jq .[0].id) &> /dev/null; fi"
