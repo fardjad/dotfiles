@@ -11,8 +11,11 @@ cask "drawio" if OS.mac?
 cask "flotato" if OS.mac?
 cask "font-fira-code-nerd-font" if OS.mac?
 cask "github" if OS.mac?
+cask "iina" if OS.mac?
+cask "imageoptim" if OS.mac?
 cask "iterm2" if OS.mac?
 cask "keka" if OS.mac?
+cask "launchcontrol" if OS.mac?
 cask "linearmouse" if OS.mac?
 cask "macfuse" if OS.mac?
 cask "macs-fan-control" if OS.mac?
@@ -33,3 +36,4 @@ cask "sublime-text" if OS.mac?
 cask "utm" if OS.mac?
 cask "visual-studio-code" if OS.mac?
 cask "vlc" if OS.mac?
+cask "whatsapp" if OS.mac?
