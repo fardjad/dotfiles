@@ -1,4 +1,5 @@
 #!/bin/bash
 . "$(dirname "$0")/_/husky.sh"
 
-npm test
+npx ncu
+npm run test

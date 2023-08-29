@@ -3,25 +3,29 @@
   "version": "1.0.0",
   "private": true,
   "description": "My dotfiles for macOS and Linux",
-  "scripts": {
-    "fix": "prettier --ignore-path .gitignore --write . && stylua --config-path astronvim/.stylua.toml --glob '**/*.lua' astronvim/",
-    "prepare": "husky install",
-    "test": "prettier --ignore-path .gitignore --check . && stylua --config-path astronvim/.stylua.toml --check --glob '**/*.lua' astronvim/"
+  "homepage": "https://github.com/fardjad/dotfiles#readme",
+  "bugs": {
+    "url": "https://github.com/fardjad/dotfiles/issues"
   },
   "repository": {
     "type": "git",
     "url": "git+https://github.com/fardjad/dotfiles.git"
   },
-  "author": "Fardjad Davari <public@fardjad.com>",
   "license": "CC BY-NC 4.0",
-  "bugs": {
-    "url": "https://github.com/fardjad/dotfiles/issues"
+  "author": "Fardjad Davari <public@fardjad.com>",
+  "scripts": {
+    "fix": "prettier --ignore-path .gitignore --write . && npm run stylua:write",
+    "prepare": "husky install",
+    "stylua:check": "stylua --config-path astronvim/.stylua.toml --check --glob '**/*.lua' astronvim/",
+    "stylua:write": "stylua --config-path astronvim/.stylua.toml --glob '**/*.lua' astronvim/",
+    "test": "prettier --ignore-path .gitignore --check . && npm run stylua:check"
   },
-  "homepage": "https://github.com/fardjad/dotfiles#readme",
   "devDependencies": {
-    "@johnnymorganz/stylua-bin": "^0.17.1",
+    "@johnnymorganz/stylua-bin": "^0.18.1",
     "husky": "^8.0.3",
-    "prettier": "^2.8.7",
-    "prettier-plugin-sh": "^0.12.8"
+    "npm-check-updates": "^16.13.2",
+    "prettier": "^3.0.3",
+    "prettier-plugin-packagejson": "^2.4.5",
+    "prettier-plugin-sh": "^0.13.1"
   }
 }
