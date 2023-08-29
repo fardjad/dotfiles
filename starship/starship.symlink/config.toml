@@ -1,4 +1,7 @@
 "$schema" = 'https://starship.rs/config-schema.json'
 
+[battery]
+disabled = true
+
 [aws]
-disabled=true
+disabled = true
