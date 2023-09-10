@@ -1,2 +1,2 @@
+brew "bash"
 brew "curl"
-brew "unzip"
