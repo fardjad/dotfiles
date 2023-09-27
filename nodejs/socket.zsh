@@ -1,7 +1,7 @@
 should_install=0
 connected=0
 
-if ! command -v "socket" > /dev/null 2>&1 && command -v "npm" > /dev/null && [ $connected -eq 1 ]; then
+if ! command -v "socket" > /dev/null 2>&1 && command -v "npm" > /dev/null; then
   should_install=1
 fi
 
@@ -16,5 +16,7 @@ fi
 unset should_install
 unset connected
 
-alias npm="socket npm"
-alias npx="socket npx"
+if command -v "socket" > /dev/null 2>&1; then
+  alias npm="socket npm"
+  alias npx="socket npx"
+fi
