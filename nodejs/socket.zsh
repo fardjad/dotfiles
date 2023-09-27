@@ -17,6 +17,8 @@ unset should_install
 unset connected
 
 if command -v "socket" > /dev/null 2>&1; then
-  alias npm="socket npm"
-  alias npx="socket npx"
+  alias npm="socket-npm"
+  alias npx="socket-npx"
+
+  compdef _npm socket-npm
 fi
