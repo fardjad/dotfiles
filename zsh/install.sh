@@ -13,9 +13,9 @@ if ! grep -q "$ZSH_PATH" /etc/shells; then
 fi
 
 if is_mac; then
-  chsh -u $(whoami) -s "$ZSH_PATH"
+  chsh -u "$(whoami)" -s "$ZSH_PATH"
 else
-  sudo chsh $(whoami) -s "$ZSH_PATH"
+  sudo chsh "$(whoami)" -s "$ZSH_PATH"
 fi
 
 link_file "./fsh.symlink" "$HOME/.fsh"

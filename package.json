@@ -21,11 +21,11 @@
     "test": "prettier --ignore-path .gitignore --check . && npm run stylua:check"
   },
   "devDependencies": {
-    "@johnnymorganz/stylua-bin": "^0.18.2",
+    "@johnnymorganz/stylua-bin": "^0.19.1",
     "husky": "^8.0.3",
-    "npm-check-updates": "^16.14.4",
-    "prettier": "^3.0.3",
-    "prettier-plugin-packagejson": "^2.4.5",
+    "npm-check-updates": "^16.14.12",
+    "prettier": "^3.1.1",
+    "prettier-plugin-packagejson": "^2.4.7",
     "prettier-plugin-sh": "^0.13.1"
   }
 }
