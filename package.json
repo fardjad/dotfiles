@@ -14,18 +14,15 @@
   "license": "CC BY-NC 4.0",
   "author": "Fardjad Davari <public@fardjad.com>",
   "scripts": {
-    "fix": "prettier --ignore-path .gitignore --write . && npm run stylua:write",
+    "fix": "prettier --ignore-path .gitignore --write .",
     "prepare": "husky install",
-    "stylua:check": "stylua --config-path astronvim/.stylua.toml --check --glob '**/*.lua' astronvim/",
-    "stylua:write": "stylua --config-path astronvim/.stylua.toml --glob '**/*.lua' astronvim/",
-    "test": "prettier --ignore-path .gitignore --check . && npm run stylua:check"
+    "test": "prettier --ignore-path .gitignore --check ."
   },
   "devDependencies": {
-    "@johnnymorganz/stylua-bin": "^0.19.1",
-    "husky": "^8.0.3",
-    "npm-check-updates": "^16.14.12",
-    "prettier": "^3.1.1",
-    "prettier-plugin-packagejson": "^2.4.7",
-    "prettier-plugin-sh": "^0.13.1"
+    "husky": "^9.0.11",
+    "npm-check-updates": "^16.14.20",
+    "prettier": "^3.2.5",
+    "prettier-plugin-packagejson": "^2.5.0",
+    "prettier-plugin-sh": "^0.14.0"
   }
 }

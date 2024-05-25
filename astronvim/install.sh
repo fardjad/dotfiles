@@ -32,5 +32,4 @@ fi
 if [ "$should_exit" -eq 1 ]; then
   exit 0
 fi
-git clone --depth 1 https://github.com/AstroNvim/AstroNvim "$HOME/.config/nvim"
-link_file "./user_config.symlink" "$NVIM_CONFIG/lua/user"
+git clone https://github.com/fardjad/astronvim_config "$HOME/.config/nvim"
