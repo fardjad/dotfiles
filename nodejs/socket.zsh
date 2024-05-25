@@ -2,7 +2,7 @@ should_install=0
 connected=0
 has_ping=0
 
-if ! command -v "ping" > /dev/null; then
+if command -v "ping" > /dev/null; then
   has_ping=1
 fi
 
