@@ -11,8 +11,14 @@ if [ ! -d "$HOME/.tmux/plugins/tpm" ]; then
   user 'run tmux and press prefix+I to install the plugins'
 fi
 
-if ! is_mac && ! check_command xclip; then
-  user 'for clipboard integration, make sure to have xclip installed'
+if ! is_mac; then
+  if ! check_command xclip; then
+    user 'for clipboard integration, make sure to have xclip installed'
+  fi
+
+  if ! check_command wl-copy; then
+    user 'for clipboard integration, make sure to have wl-clipboard installed'
+  fi
 fi
 
 link_file "./tmux.conf.symlink" "$HOME/.tmux.conf"

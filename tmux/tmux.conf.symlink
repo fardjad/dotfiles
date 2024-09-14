@@ -1,8 +1,9 @@
 # List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+
 set -g @plugin 'tmux-plugins/tmux-prefix-highlight'
 set -g @plugin 'tmux-plugins/tmux-sensible'
 set -g @plugin 'tmux-plugins/tmux-yank'
-set -g @plugin 'tmux-plugins/tpm'
 
 source-file "${HOME}/.tmux/basic.tmux.conf"
 source-file "${HOME}/.tmux/theme.tmux.conf"
