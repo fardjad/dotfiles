@@ -1,0 +1,13 @@
+cask "affinity-designer" if OS.mac?
+cask "affinity-photo" if OS.mac?
+cask "affinity-publisher" if OS.mac?
+cask "daisydisk" if OS.mac?
+cask "istat-menus" if OS.mac?
+cask "launchcontrol" if OS.mac?
+cask "moom" if OS.mac?
+cask "mountain-duck" if OS.mac?
+cask "pastebot" if OS.mac?
+cask "spotify" if OS.mac?
+
+#cask "imazing" if OS.mac?
+#cask "vmware-fusion" if OS.mac?

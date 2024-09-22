@@ -10,6 +10,3 @@ if ! is_mac; then
 fi
 
 brew_bundle_install
-
-user "run $DOTFILES/macos/setup-macos.sh to setup macOS"
-user "run 'brew autoupdate start' to enable auto update for brew"
