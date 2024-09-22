@@ -21,3 +21,5 @@ fi
 link_file "./fsh.symlink" "$HOME/.fsh"
 link_file "./zsh_plugins.txt.symlink" "$HOME/.zsh_plugins.txt"
 link_file "./zshrc.symlink" "$HOME/.zshrc"
+
+user "install eza or GNU ls for the ls command to work"
