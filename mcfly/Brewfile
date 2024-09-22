@@ -1,2 +1,1 @@
-tap "cantino/mcfly"
-brew "cantino/mcfly/mcfly"
+brew "mcfly"
