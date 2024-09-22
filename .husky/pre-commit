@@ -1,5 +1,1 @@
-#!/bin/bash
-. "$(dirname "$0")/_/husky.sh"
-
-npx -p npm-check-updates ncu
-npm run test
+npm test

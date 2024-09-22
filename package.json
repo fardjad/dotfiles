@@ -15,14 +15,14 @@
   "author": "Fardjad Davari <public@fardjad.com>",
   "scripts": {
     "fix": "prettier --ignore-path .gitignore --write .",
-    "prepare": "husky install",
+    "prepare": "husky",
     "test": "prettier --ignore-path .gitignore --check ."
   },
   "devDependencies": {
-    "husky": "^9.0.11",
-    "npm-check-updates": "^16.14.20",
-    "prettier": "^3.2.5",
-    "prettier-plugin-packagejson": "^2.5.0",
+    "husky": "^9.1.6",
+    "npm-check-updates": "^17.1.2",
+    "prettier": "^3.3.3",
+    "prettier-plugin-packagejson": "^2.5.2",
     "prettier-plugin-sh": "^0.14.0"
   }
 }
