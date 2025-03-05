@@ -9,7 +9,6 @@ cask "iina" if OS.mac?
 cask "iterm2" if OS.mac?
 cask "jdownloader" if OS.mac?
 cask "keka" if OS.mac?
-cask "librewolf" if OS.mac?
 cask "linearmouse" if OS.mac?
 cask "macfuse" if OS.mac?
 cask "meetingbar" if OS.mac?
