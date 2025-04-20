@@ -1,6 +1,5 @@
 tap "domt4/autoupdate" if OS.mac?
 
-cask "alfred" if OS.mac?
 cask "appcleaner" if OS.mac?
 cask "calibre" if OS.mac?
 cask "font-fira-code-nerd-font" if OS.mac?
@@ -14,6 +13,7 @@ cask "macfuse" if OS.mac?
 cask "meetingbar" if OS.mac?
 cask "obs" if OS.mac?
 cask "obsidian" if OS.mac?
+cask "raycast" if OS.mac?
 cask "syncthing" if OS.mac?
 cask "tailscale" if OS.mac?
 cask "tor-browser" if OS.mac?

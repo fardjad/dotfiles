@@ -20,9 +20,9 @@
   },
   "devDependencies": {
     "husky": "^9.1.7",
-    "npm-check-updates": "^17.1.15",
+    "npm-check-updates": "^17.1.18",
     "prettier": "^3.5.3",
     "prettier-plugin-packagejson": "^2.5.10",
-    "prettier-plugin-sh": "^0.15.0"
+    "prettier-plugin-sh": "^0.17.2"
   }
 }
