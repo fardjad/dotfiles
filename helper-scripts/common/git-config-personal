@@ -1,0 +1,14 @@
+#!/usr/bin/env bash
+
+if ! command -v git 2>&1 > /dev/null; then
+  echo 'git is not installed!'
+  exit 1
+fi
+
+if ! git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+  echo "Current directory is not a git repository."
+  exit 1
+fi
+
+git config user.name "Fardjad Davari"
+git config user.email "public@fardjad.com"
