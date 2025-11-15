@@ -6,7 +6,6 @@ cask "font-fira-code-nerd-font" if OS.mac?
 cask "github" if OS.mac?
 cask "iina" if OS.mac?
 cask "iterm2" if OS.mac?
-cask "jdownloader" if OS.mac?
 cask "keka" if OS.mac?
 cask "linearmouse" if OS.mac?
 cask "macfuse" if OS.mac?
@@ -14,8 +13,5 @@ cask "meetingbar" if OS.mac?
 cask "obs" if OS.mac?
 cask "obsidian" if OS.mac?
 cask "raycast" if OS.mac?
-cask "syncthing" if OS.mac?
-cask "tailscale" if OS.mac?
-cask "tor-browser" if OS.mac?
 cask "visual-studio-code" if OS.mac?
 cask "zed" if OS.mac?
