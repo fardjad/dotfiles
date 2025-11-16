@@ -16,7 +16,7 @@
   "scripts": {
     "fix": "prettier --ignore-path .gitignore --write .",
     "prepare": "husky",
-    "test": "prettier --ignore-path .gitignore --check ."
+    "test": "ncu -e 2 && prettier --ignore-path .gitignore --check ."
   },
   "devDependencies": {
     "husky": "^9.1.7",
