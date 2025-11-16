@@ -72,3 +72,26 @@ link_file() {
 
   popd > /dev/null
 }
+
+remote_bash_install() {
+  if [ $# -lt 1 ]; then
+    echo "Usage: remote-install <script-url> [args...]"
+    return 1
+  fi
+
+  if ! check_command curl; then
+    fail "Error: curl is not installed or not in PATH."
+  fi
+
+  local url="$1"
+  shift
+
+  # CI=true and SHELL=/bin/false are set to discourage installer scripts to
+  # mess with shell config files
+  curl -LsSf "$url" \
+    | SHELL=/bin/false CI=true bash -s -- "$@"
+
+  if [ $? -ne 0 ]; then
+    fail "Error: Failed to execute the script from $url"
+  fi
+}

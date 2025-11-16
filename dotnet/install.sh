@@ -7,8 +7,7 @@ source "$(dirname "$0")/../script/bootstrap.bash"
 brew_bundle_install
 
 dotnet_install() {
-  curl --proto '=https' --tlsv1.2 -LsSf https://dot.net/v1/dotnet-install.sh \
-    | bash -s -- "$@"
+  remote_bash_install "https://dot.net/v1/dotnet-install.sh" "$@"
 }
 
 export DOTNET_INSTALL_DIR="${HOME}/.dotnet"
