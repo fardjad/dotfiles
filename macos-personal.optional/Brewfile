@@ -9,6 +9,5 @@ cask "affinity-publisher" if OS.mac?
 cask "daisydisk" if OS.mac?
 cask "istat-menus" if OS.mac?
 cask "launchcontrol" if OS.mac?
-cask "moom" if OS.mac?
 cask "mountain-duck" if OS.mac?
 cask "spotify" if OS.mac?
