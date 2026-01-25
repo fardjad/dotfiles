@@ -10,3 +10,5 @@ if ! is_mac; then
 fi
 
 brew_bundle_install
+
+user "run $DOTFILES/macos-personal.optional/brave-browser/set-group-policy.sh to configure Brave Browser"
