@@ -12,4 +12,4 @@ fi
 brew_bundle_install
 
 user "run $DOTFILES/macos/setup-macos.sh to setup macOS"
-user "run 'brew autoupdate start' to enable auto update for brew"
+user "run 'brew autoupdate start 43200 --upgrade --cleanup --immediate --sudo' to enable auto update for brew"
