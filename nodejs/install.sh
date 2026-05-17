@@ -25,4 +25,6 @@ if ! check_command "node"; then
   nvs use lts
 fi
 
+npm install -g corepack@latest
+npm install -g npm@latest
 corepack enable
