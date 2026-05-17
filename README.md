@@ -59,19 +59,25 @@ update the installed packages to the latest version.
 
 ### OS Specific Notes
 
-- (macOS only, optional) In order to set macOS defaults run the following:
+#### macOS
+
+- (optional) In order to set macOS defaults run the following:
 
   ```bash
   [ -d ~/.dotfiles ] && ~/.dotfiles/macos/setup-macos.sh || echo >&2 'You must clone the repository first!'
   ```
 
-- (macOS only, optional) Configure iTerm2 to load preferences from
+- (optional) Configure iTerm2 to load preferences from
   `~/.dotfiles/macos/iterm2` directory.
-- (macOS only, Apple Silicon) Run the following to enable Rosetta:
+- (Apple Silicon) Run the following to enable Rosetta:
 
   ```bash
   softwareupdate --install-rosetta
   ```
+
+#### Linux
+
+Make sure the distro zsh package is installed. A `/etc/zprofile` is needed to load the scripts in `/etc/profile.d/` globally
 
 ### Credits
 
