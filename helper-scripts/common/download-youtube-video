@@ -1,0 +1,36 @@
+#!/bin/bash
+
+# Check if uvx is installed
+if ! command -v uvx &> /dev/null; then
+  echo "Error: 'uvx' is not installed or not in your PATH."
+  echo "Please install 'uv' to continue."
+  exit 1
+fi
+
+# Check if ffmpeg is installed
+if ! command -v ffmpeg &> /dev/null; then
+  echo "Error: 'ffmpeg' is not installed or not in your PATH."
+  echo "Please install 'ffmpeg' (e.g., via brew, apt, or winget) to merge video/audio and embed subtitles."
+  exit 1
+fi
+
+# Check if a URL was provided
+if [ -z "$1" ]; then
+  echo "Usage: ./download.sh <youtube-url>"
+  exit 1
+fi
+
+URL="$1"
+
+echo "Dependencies found! Downloading highest quality MP4 with embedded English subtitles..."
+
+uvx yt-dlp \
+  -f "bv*+ba/b" \
+  --merge-output-format mp4 \
+  --write-subs \
+  --write-auto-subs \
+  --sub-langs "en" \
+  --embed-subs \
+  "$URL"
+
+echo "Done!"
