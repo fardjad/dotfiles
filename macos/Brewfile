@@ -6,7 +6,7 @@ cask "calibre" if OS.mac?
 cask "font-fira-code-nerd-font" if OS.mac?
 cask "github" if OS.mac?
 cask "iina" if OS.mac?
-cask "iterm2" if OS.mac?
+
 cask "keka" if OS.mac?
 cask "linearmouse" if OS.mac?
 cask "macfuse" if OS.mac?

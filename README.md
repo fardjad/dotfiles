@@ -67,8 +67,6 @@ update the installed packages to the latest version.
   [ -d ~/.dotfiles ] && ~/.dotfiles/macos/setup-macos.sh || echo >&2 'You must clone the repository first!'
   ```
 
-- (optional) Configure iTerm2 to load preferences from
-  `~/.dotfiles/macos/iterm2` directory.
 - (Apple Silicon) Run the following to enable Rosetta:
 
   ```bash
