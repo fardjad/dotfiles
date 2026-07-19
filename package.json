@@ -14,9 +14,9 @@
   "license": "CC BY-NC 4.0",
   "author": "Fardjad Davari <public@fardjad.com>",
   "scripts": {
-    "fix": "prettier --ignore-path .gitignore --write .",
+    "fix": "prettier --ignore-path .prettierignore --ignore-path .gitignore --write .",
     "prepare": "husky",
-    "test": "ncu -e 2 && prettier --ignore-path .gitignore --check ."
+    "test": "ncu -e 2 && prettier --ignore-path .prettierignore --ignore-path .gitignore --check ."
   },
   "devDependencies": {
     "husky": "^9.1.7",
