@@ -22,8 +22,8 @@
 
 - Entry point `main(argv)` parses command and arguments (`init|changes|update`, `--root`, `--include`, `--exclude`, `--exception`) and dispatches via strict branches.
 - `cmdInit()` computes include/exclude candidate sets using `selectFiles()` and writes:
-  1. `.slim/codemap.json` via `saveState()`
-  2. one `codemap.md` per discovered folder via `createEmptyCodemap()`.
+  1) `.slim/codemap.json` via `saveState()`
+  2) one `codemap.md` per discovered folder via `createEmptyCodemap()`.
 - `cmdChanges()` reloads state (`loadState()` + `migrateLegacyState()`), recomputes current hashes, emits added/removed/modified diffs and affected folder list, and exits non-zero if state is absent.
 - `cmdUpdate()` recomputes full state from existing metadata and persists it, used after targeted fixers finish updates.
 - `codemap` skill invocation path in SKILL workflow is explicit: Step 1 checks `.slim/codemap.json` or `.slim/cartography.json`, then Step 2/3 selects init or incremental path.

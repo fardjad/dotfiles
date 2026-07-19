@@ -49,7 +49,6 @@ node codemap.mjs update --root /repo
 ### codemap.md (per folder)
 
 Empty templates created in each folder for fixers to fill with:
-
 - Responsibility
 - Design patterns
 - Data/control flow

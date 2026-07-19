@@ -1,3 +1,5 @@
 {
-  "plugin": ["oh-my-opencode-slim"]
+  "plugin": [
+    "oh-my-opencode-slim"
+  ]
 }

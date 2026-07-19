@@ -36,17 +36,14 @@ repeated patterns, friction, and improvement opportunities.
 ### Session Discovery
 
 1. **Load recent sessions** - Query the SQLite database directly:
-
    ```bash
    bun -e "import Database from 'bun:sqlite'; const db = new Database('/home/mhenke/.local/share/opencode/opencode.db'); console.log(db.query('SELECT id, directory, title, agent, model, time_created, cost, tokens_input, tokens_output FROM session ORDER BY time_created DESC LIMIT 50').all())"
    ```
-
    Adjust `LIMIT 50` to `--last N` if specified.
 
    **Session table columns:** `id, directory, title, agent, model, time_created, cost, tokens_input, tokens_output`
 
 2. **Load session messages** - For each session ID, query the message table:
-
    ```bash
    bun -e "import Database from 'bun:sqlite'; const db = new Database('/home/mhenke/.local/share/opencode/opencode.db'); console.log(db.query('SELECT data FROM message WHERE session_id = ?').all('ses_14de9c68effegtZtlATm42wnz7'))"
    ```
@@ -68,7 +65,9 @@ For each session, analyze and produce a structured summary:
     "Repeated grep to find test file",
     "Three failed test runs before passing"
   ],
-  "recommendations": ["Create /test-ci command"],
+  "recommendations": [
+    "Create /test-ci command"
+  ],
   "duration_minutes": 18,
   "models_used": ["opencode/mimo-v2.5-free"],
   "agents_used": ["orchestrator", "fixer", "explorer"],
@@ -78,7 +77,6 @@ For each session, analyze and produce a structured summary:
 ```
 
 **Confidence scoring:**
-
 - 0.9-1.0: Clear success/failure, obvious patterns
 - 0.7-0.9: Likely outcome, patterns inferred from tool usage
 - 0.5-0.7: Uncertain outcome, limited evidence
@@ -89,7 +87,6 @@ For each session, analyze and produce a structured summary:
 Store session summaries in `~/.config/opencode/oh-my-opencode-slim/reflections/sessions/`.
 
 **Cache logic:**
-
 1. Check if `<session-id>.json` exists in reflections directory
 2. If yes, load it (saves tokens)
 3. If no, analyze session and save summary
@@ -106,7 +103,6 @@ After analyzing all sessions, aggregate findings:
 5. **Cross-reference** - see if patterns correlate with specific models, agents, or repos
 
 **Scope categories:**
-
 - **Global** - applies to all repos (pattern seen in >50% of repos)
 - **Cross-repo** - applies to specific repos where pattern appears
 - **Project-specific** - only relevant to one repo
@@ -149,17 +145,14 @@ Needs more evidence
 ### Error Handling
 
 **Log file issues:**
-
 - Log doesn't exist → "No OpenCode log found at <path>. Run OpenCode in at least one repo first."
 - Log is empty → "OpenCode log is empty. No sessions to analyze."
 
 **Session loading issues:**
-
 - Session ID not loadable → Skip with warning: "Session <id> could not be loaded, skipping."
 - Session has no messages → Skip: "Session <id> has no messages."
 
 **Recovery pattern:**
-
 - Log the failure
 - Continue with remaining sessions
 - Report failures at end: "3 sessions skipped due to load errors"

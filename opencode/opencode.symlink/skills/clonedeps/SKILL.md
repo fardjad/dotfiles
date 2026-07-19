@@ -40,7 +40,6 @@ Understand this project first, then recommend remote source repos that would
 help a developer work on it.
 
 Read enough of the current repo to understand:
-
 - what the project does
 - its main architecture
 - the important integration points
@@ -56,7 +55,6 @@ Recommend a repo only when its source code would be more useful than docs or the
 current repo alone.
 
 For each recommendation, include:
-
 - repo name
 - repo URL
 - suggested ref/tag/commit if known
@@ -65,7 +63,6 @@ For each recommendation, include:
 - caveats
 
 Also include:
-
 - current-repo files/folders to inspect first
 - repos/dependencies you considered but would not clone
 

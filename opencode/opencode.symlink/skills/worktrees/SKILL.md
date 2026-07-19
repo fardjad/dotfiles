@@ -61,7 +61,6 @@ Before executing any Git mutation command, the Orchestrator must observe the
 following guards:
 
 ### 1. Pre-Flight Checklist
-
 - Confirm the current directory is inside a Git repository.
 - Check the current branch, base branch, and dirty/uncommitted state.
 - Inspect the output of `git worktree list` to avoid path or branch conflicts.
@@ -69,9 +68,7 @@ following guards:
 - Ensure `.slim/worktrees/` is ignored by Git before creating nested worktrees.
 
 ### 2. Mandatory User Confirmation
-
 You must seek explicit user confirmation before executing:
-
 - `git worktree add` or `git worktree remove`
 - Branch creation, deletion, or renaming
 - Merges, rebases, or cherry-picks
@@ -115,7 +112,6 @@ keeps them readable to OpenCode.
 ## Workflow Guide
 
 ### Phase 1: Planning & Setup
-
 1. Identify the task scope and determine a short `<slug>` for the worktree.
 2. Formulate a branch name. Default to `omos/<slug>` unless project/user conventions dictate otherwise.
 3. Validate repository safety. Ask the user for confirmation to initialize the lane.
@@ -128,7 +124,6 @@ keeps them readable to OpenCode.
 6. Register the metadata in `.slim/worktrees.json`.
 
 ### Phase 2: Execution & Delegation
-
 1. Run all sub-agents with their working directory set strictly to the worktree
    path, such as `.slim/worktrees/<slug>`.
 2. Do not modify the main checkout for lane work. Keep build, test, and edit
@@ -139,9 +134,7 @@ keeps them readable to OpenCode.
    approved local checkpoint commits.
 
 ### Phase 3: Integration & Validation
-
 Before merging or integrating the worktree branch:
-
 1. Run lint, build, formatting, and unit tests inside the worktree directory.
 2. Generate and display a clear diff comparing the worktree branch to the
    integration base branch.
@@ -150,7 +143,6 @@ Before merging or integrating the worktree branch:
    checkout or the user-approved integration checkout.
 
 ### Phase 4: Cleanup & Pruning
-
 1. Before cleaning the lane, ensure the managed ignore blocks follow the Ignore
    File Setup rules above.
 2. Ensure all changes are safely merged or archived.
@@ -167,7 +159,6 @@ Before merging or integrating the worktree branch:
 ## When to Use vs. Not Use
 
 ### Use When:
-
 - Performing risky or destructive refactoring that could break the active working environment.
 - Working on parallel tasks/bugfixes that require switching contexts without committing half-finished work.
 - Running independent background agents on separate branches.
@@ -176,6 +167,5 @@ Before merging or integrating the worktree branch:
 - Explicitly asked to use worktrees for a specific task.
 
 ### Do NOT Use When:
-
 - Making simple single-file changes, documentation updates, or minor bug fixes.
 - Working in a git repository that is not fully initialized or has complex multi-submodule states not supported easily by worktrees.

@@ -1,6 +1,6 @@
 #!/usr/bin/env node
 
-import { createHash } from "node:crypto";
+import { createHash } from 'node:crypto';
 import {
   existsSync,
   mkdirSync,
@@ -9,15 +9,15 @@ import {
   renameSync,
   statSync,
   writeFileSync,
-} from "node:fs";
-import path from "node:path";
-import { fileURLToPath } from "node:url";
+} from 'node:fs';
+import path from 'node:path';
+import { fileURLToPath } from 'node:url';
 
-export const VERSION = "1.0.0";
-export const STATE_DIR = ".slim";
-export const STATE_FILE = "codemap.json";
-export const LEGACY_STATE_FILE = "cartography.json";
-export const CODEMAP_FILE = "codemap.md";
+export const VERSION = '1.0.0';
+export const STATE_DIR = '.slim';
+export const STATE_FILE = 'codemap.json';
+export const LEGACY_STATE_FILE = 'cartography.json';
+export const CODEMAP_FILE = 'codemap.md';
 
 export class PatternMatcher {
   regex;
@@ -29,17 +29,17 @@ export class PatternMatcher {
     }
 
     const regexParts = patterns.map((pattern) => {
-      let reg = pattern.replace(/[.*+?^${}()|[\]\\]/g, "\\$&");
-      reg = reg.replace(/\\\*\\\*\//g, "(?:.*/)?");
-      reg = reg.replace(/\\\*\\\*/g, ".*");
-      reg = reg.replace(/\\\*/g, "[^/]*");
-      reg = reg.replace(/\\\?/g, ".");
+      let reg = pattern.replace(/[.*+?^${}()|[\]\\]/g, '\\$&');
+      reg = reg.replace(/\\\*\\\*\//g, '(?:.*/)?');
+      reg = reg.replace(/\\\*\\\*/g, '.*');
+      reg = reg.replace(/\\\*/g, '[^/]*');
+      reg = reg.replace(/\\\?/g, '.');
 
-      if (pattern.endsWith("/")) {
-        reg += ".*";
+      if (pattern.endsWith('/')) {
+        reg += '.*';
       }
 
-      if (pattern.startsWith("/")) {
+      if (pattern.startsWith('/')) {
         reg = `^${reg.slice(1)}`;
       } else {
         reg = `(?:^|.*/)${reg}`;
@@ -48,7 +48,7 @@ export class PatternMatcher {
       return `(?:${reg}$)`;
     });
 
-    this.regex = new RegExp(regexParts.join("|"));
+    this.regex = new RegExp(regexParts.join('|'));
   }
 
   matches(filePath) {
@@ -58,13 +58,13 @@ export class PatternMatcher {
 }
 
 export function loadGitignore(root) {
-  const gitignorePath = path.join(root, ".gitignore");
+  const gitignorePath = path.join(root, '.gitignore');
   if (!existsSync(gitignorePath)) return [];
 
-  return readFileSync(gitignorePath, "utf8")
-    .split("\n")
+  return readFileSync(gitignorePath, 'utf8')
+    .split('\n')
     .map((line) => line.trim())
-    .filter((line) => line && !line.startsWith("#"));
+    .filter((line) => line && !line.startsWith('#'));
 }
 
 function walkFiles(root) {
@@ -74,7 +74,7 @@ function walkFiles(root) {
     for (const entry of readdirSync(currentDir, { withFileTypes: true })) {
       const fullPath = path.join(currentDir, entry.name);
       if (entry.isDirectory()) {
-        if (!entry.name.startsWith(".")) {
+        if (!entry.name.startsWith('.')) {
           visit(fullPath);
         }
         continue;
@@ -103,8 +103,8 @@ export function selectFiles(
   const exceptionSet = new Set(exceptions);
 
   return walkFiles(root).filter((fullPath) => {
-    let relPath = path.relative(root, fullPath).replaceAll(path.sep, "/");
-    if (relPath.startsWith("./")) {
+    let relPath = path.relative(root, fullPath).replaceAll(path.sep, '/');
+    if (relPath.startsWith('./')) {
       relPath = relPath.slice(2);
     }
 
@@ -120,9 +120,9 @@ export function selectFiles(
 export function computeFileHash(filePath) {
   try {
     const buffer = readFileSync(filePath);
-    return createHash("md5").update(buffer).digest("hex");
+    return createHash('md5').update(buffer).digest('hex');
   } catch {
-    return "";
+    return '';
   }
 }
 
@@ -131,27 +131,27 @@ export function computeFolderHash(folder, fileHashes) {
     .filter(
       ([filePath]) =>
         filePath.startsWith(`${folder}/`) ||
-        (folder === "." && !filePath.includes("/")),
+        (folder === '.' && !filePath.includes('/')),
     )
     .sort(([a], [b]) => a.localeCompare(b));
 
-  if (!folderFiles.length) return "";
+  if (!folderFiles.length) return '';
 
-  const hasher = createHash("md5");
+  const hasher = createHash('md5');
   for (const [filePath, hash] of folderFiles) {
     hasher.update(`${filePath}:${hash}\n`);
   }
-  return hasher.digest("hex");
+  return hasher.digest('hex');
 }
 
 export function getFoldersWithFiles(files, root) {
-  const folders = new Set(["."]);
+  const folders = new Set(['.']);
 
   for (const filePath of files) {
-    const relPath = path.relative(root, filePath).replaceAll(path.sep, "/");
-    const parts = relPath.split("/").slice(0, -1);
+    const relPath = path.relative(root, filePath).replaceAll(path.sep, '/');
+    const parts = relPath.split('/').slice(0, -1);
     for (let i = 0; i < parts.length; i++) {
-      folders.add(parts.slice(0, i + 1).join("/"));
+      folders.add(parts.slice(0, i + 1).join('/'));
     }
   }
 
@@ -181,7 +181,7 @@ export function loadState(root) {
   if (!existsSync(statePath)) return null;
 
   try {
-    return JSON.parse(readFileSync(statePath, "utf8"));
+    return JSON.parse(readFileSync(statePath, 'utf8'));
   } catch {
     return null;
   }
@@ -233,7 +233,7 @@ function buildState(
 ) {
   const fileHashes = {};
   for (const filePath of selectedFiles) {
-    const relPath = path.relative(root, filePath).replaceAll(path.sep, "/");
+    const relPath = path.relative(root, filePath).replaceAll(path.sep, '/');
     fileHashes[relPath] = computeFileHash(filePath);
   }
 
@@ -266,7 +266,7 @@ export function cmdInit({ root, include = [], exclude = [], exception = [] }) {
     return 1;
   }
 
-  const includePatterns = include.length ? include : ["**/*"];
+  const includePatterns = include.length ? include : ['**/*'];
   const excludePatterns = exclude;
   const exceptions = exception;
   const gitignore = loadGitignore(resolvedRoot);
@@ -299,8 +299,8 @@ export function cmdInit({ root, include = [], exclude = [], exception = [] }) {
 
   for (const folder of folders) {
     const folderPath =
-      folder === "." ? resolvedRoot : path.join(resolvedRoot, folder);
-    const folderName = folder === "." ? path.basename(resolvedRoot) : folder;
+      folder === '.' ? resolvedRoot : path.join(resolvedRoot, folder);
+    const folderName = folder === '.' ? path.basename(resolvedRoot) : folder;
     createEmptyCodemap(folderPath, folderName);
   }
 
@@ -317,7 +317,7 @@ export function cmdChanges({ root }) {
   }
 
   const metadata = state.metadata ?? {};
-  const includePatterns = metadata.include_patterns ?? ["**/*"];
+  const includePatterns = metadata.include_patterns ?? ['**/*'];
   const excludePatterns = metadata.exclude_patterns ?? [];
   const exceptions = metadata.exceptions ?? [];
   const gitignore = loadGitignore(resolvedRoot);
@@ -332,7 +332,7 @@ export function cmdChanges({ root }) {
 
   const currentHashes = Object.fromEntries(
     currentFiles.map((filePath) => [
-      path.relative(resolvedRoot, filePath).replaceAll(path.sep, "/"),
+      path.relative(resolvedRoot, filePath).replaceAll(path.sep, '/'),
       computeFileHash(filePath),
     ]),
   );
@@ -353,7 +353,7 @@ export function cmdChanges({ root }) {
     .sort();
 
   if (!added.length && !removed.length && !modified.length) {
-    console.log("No changes detected.");
+    console.log('No changes detected.');
     return 0;
   }
 
@@ -372,11 +372,11 @@ export function cmdChanges({ root }) {
     for (const filePath of modified) console.log(`  ~ ${filePath}`);
   }
 
-  const affectedFolders = new Set(["."]);
+  const affectedFolders = new Set(['.']);
   for (const filePath of [...added, ...removed, ...modified]) {
-    const parts = filePath.split("/").slice(0, -1);
+    const parts = filePath.split('/').slice(0, -1);
     for (let i = 0; i < parts.length; i++) {
-      affectedFolders.add(parts.slice(0, i + 1).join("/"));
+      affectedFolders.add(parts.slice(0, i + 1).join('/'));
     }
   }
 
@@ -398,7 +398,7 @@ export function cmdUpdate({ root }) {
   }
 
   const metadata = state.metadata ?? {};
-  const includePatterns = metadata.include_patterns ?? ["**/*"];
+  const includePatterns = metadata.include_patterns ?? ['**/*'];
   const excludePatterns = metadata.exclude_patterns ?? [];
   const exceptions = metadata.exceptions ?? [];
   const gitignore = loadGitignore(resolvedRoot);
@@ -434,15 +434,15 @@ export function parseArgs(argv) {
     const arg = rest[i];
     const value = rest[i + 1];
 
-    if (!arg?.startsWith("--")) continue;
-    if (value === undefined || value.startsWith("--")) {
+    if (!arg?.startsWith('--')) continue;
+    if (value === undefined || value.startsWith('--')) {
       throw new Error(`Missing value for ${arg}`);
     }
 
     const key = arg.slice(2);
-    if (key === "include" || key === "exclude" || key === "exception") {
+    if (key === 'include' || key === 'exclude' || key === 'exception') {
       options[key].push(value);
-    } else if (key === "root") {
+    } else if (key === 'root') {
       options.root = value;
     } else {
       throw new Error(`Unknown option: ${arg}`);
@@ -460,14 +460,14 @@ export function main(argv = process.argv.slice(2)) {
 
     if (!command || !options.root) {
       console.error(
-        "Usage: codemap.mjs <init|changes|update> --root /path [--include glob] [--exclude glob] [--exception path]",
+        'Usage: codemap.mjs <init|changes|update> --root /path [--include glob] [--exclude glob] [--exception path]',
       );
       return 1;
     }
 
-    if (command === "init") return cmdInit(options);
-    if (command === "changes") return cmdChanges(options);
-    if (command === "update") return cmdUpdate(options);
+    if (command === 'init') return cmdInit(options);
+    if (command === 'changes') return cmdChanges(options);
+    if (command === 'update') return cmdUpdate(options);
 
     console.error(`Unknown command: ${command}`);
     return 1;
