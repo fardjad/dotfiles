@@ -3,6 +3,7 @@
   "mcp": {},
   "plugin": [
     "rtk",
+    "@dietrichgebert/ponytail",
     "./plugins/local-config.ts",
     "./plugins/caveman/plugin.js",
     "oh-my-opencode-slim"
