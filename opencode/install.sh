@@ -21,4 +21,12 @@ bun x oh-my-opencode-slim@latest install \
   --background-subagents=yes \
   --background-subagents-target="$PWD/init.zsh"
 
+bun x github:JuliusBrussee/caveman -- \
+  --only opencode \
+  --non-interactive
+
+for skill in $(cat skills.txt); do
+  bun x skills add "$skill" -g -a opencode -y
+done
+
 rtk init -g --opencode

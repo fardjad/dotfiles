@@ -1,7 +1,12 @@
 {
   "$schema": "https://opencode.ai/config.json",
   "mcp": {},
-  "plugin": ["rtk", "./plugins/local-config.ts", "oh-my-opencode-slim"],
+  "plugin": [
+    "rtk",
+    "./plugins/local-config.ts",
+    "./plugins/caveman/plugin.js",
+    "oh-my-opencode-slim"
+  ],
   "agent": {
     "explore": {
       "disable": true
