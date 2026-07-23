@@ -2,4 +2,4 @@
 export OPENCODE_EXPERIMENTAL_BACKGROUND_SUBAGENTS=true
 # <<< oh-my-opencode-slim background subagents <<<
 
-export PONYTAIL_DEFAULT_MODE="full"
+export PONYTAIL_DEFAULT_MODE="lite"
