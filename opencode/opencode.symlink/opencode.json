@@ -6,6 +6,7 @@
     "@dietrichgebert/ponytail",
     "./plugins/local-config.ts",
     "./plugins/caveman/plugin.js",
+    "./plugins/project-openrouter-key.ts",
     "oh-my-opencode-slim"
   ],
   "agent": {

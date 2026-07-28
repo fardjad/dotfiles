@@ -60,7 +60,7 @@ export const LocalConfigPlugin: Plugin = async () => {
 
 	// Return the `config` hook so OpenCode calls it with the live merged config.
 	return {
-		config(cfg) {
+		async config(cfg) {
 			deepMerge(cfg as JsonObject, localConfig as JsonObject);
 		},
 	};

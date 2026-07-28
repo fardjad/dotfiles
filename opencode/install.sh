@@ -14,6 +14,10 @@ fi
 mkdir -p "$HOME/.config"
 link_file "./opencode.symlink" "$HOME/.config/opencode"
 
+pushd "$HOME/.config/opencode"
+bun install
+popd
+
 bun x oh-my-opencode-slim@latest install \
   --no-tui \
   --skills=force \
