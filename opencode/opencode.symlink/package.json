@@ -5,7 +5,7 @@
     "format": "prettier --write *.json"
   },
   "dependencies": {
-    "@opencode-ai/plugin": "1.18.0",
+    "@opencode-ai/plugin": "1.18.15",
     "dotenv": "^17.2.3"
   },
   "devDependencies": {
