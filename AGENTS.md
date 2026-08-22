@@ -25,6 +25,12 @@ This repository contains modular dotfiles for macOS, Ubuntu, WSL, and Codespaces
 - Put shell setup in focused `*.zsh` files such as `path.zsh`, `init.zsh`, `aliases.zsh`, or `completion.zsh` when appropriate.
 - Do not overwrite user files directly. `link_file` preserves an existing destination as a `.backup` before linking.
 
+## Commits
+
+- Follow the repository's scoped, imperative commit format: `<scope>: <verb> <concise description>`, for example `opencode: update skills and caveman parser`.
+- Use the affected top-level module as the scope, such as `opencode`, `macos`, `nodejs`, `script`, or `docs`. Do not use Conventional Commit type prefixes such as `chore(scope):`.
+- Stage and commit only files relevant to that scope. Do not include unrelated working-tree changes.
+
 ## Validation
 
 - Run `bash -n` on every changed shell script.
