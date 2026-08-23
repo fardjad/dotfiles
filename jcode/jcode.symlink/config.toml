@@ -1,0 +1,205 @@
+[keybindings]
+scroll_up = "ctrl+shift+k"
+scroll_down = "ctrl+shift+j"
+scroll_page_up = "alt+u"
+scroll_page_down = "alt+d"
+model_switch_next = "ctrl+tab"
+model_switch_prev = "ctrl+shift+tab"
+fallback_switch = "ctrl+y"
+effort_increase = "cmd+right"
+effort_decrease = "cmd+left"
+centered_toggle = "alt+c"
+scroll_prompt_up = "ctrl+k"
+scroll_prompt_down = "ctrl+j"
+scroll_bookmark = "ctrl+g"
+auto_poke_toggle = "ctrl+p"
+scroll_up_fallback = ""
+scroll_down_fallback = ""
+workspace_left = "alt+h"
+workspace_down = "alt+j"
+workspace_up = "alt+k"
+workspace_right = "alt+l"
+side_panel_toggle = "alt+m"
+copy_selection_toggle = "alt+y"
+diagram_pane_toggle = "alt+t"
+typing_scroll_lock_toggle = "alt+s"
+diff_mode_cycle = "alt+g"
+info_widget_toggle = "cmd+ctrl+i"
+todo_card_toggle = "alt+x"
+swarm_panel_focus = "alt+n"
+new_terminal = "cmd+shift+;"
+open_resume = "cmd+b"
+session_picker_enter = "current-terminal"
+
+[dictation]
+command = ""
+mode = "send"
+key = "off"
+timeout_secs = 90
+
+[display]
+diff_mode = "inline"
+queue_mode = false
+auto_server_reload = true
+mouse_capture = true
+debug_socket = false
+emoji = true
+centered = false
+show_thinking = true
+reasoning_display = "full"
+diagram_mode = "none"
+markdown_spacing = "compact"
+latex_rendering = "image"
+pin_images = false
+pin_todos = true
+idle_animation = false
+prompt_entry_animation = true
+disabled_animations = []
+diff_line_wrap = true
+performance = ""
+animation_fps = 60
+redraw_fps = 60
+prompt_preview = true
+compact_notifications = true
+copy_badge_alt_label = ""
+show_agentgrep_output = true
+show_bash_output = true
+tool_call_details = true
+keybinding_hints = true
+theme = ""
+active_sessions_manager = false
+external_sessions = true
+usage_display = "left"
+overscroll_status = "on"
+
+[display.native_scrollbars]
+chat = true
+side_panel = true
+
+[display.colors]
+
+[features]
+check_updates = false
+memory = true
+swarm = true
+mermaid = true
+auto_poke = true
+message_timestamps = true
+persist_memory_injections = true
+kv_cache_miss_notices = true
+update_channel = "stable"
+
+[websearch]
+engine = "duckduckgo"
+fallback_engines = ["bing"]
+bing_api_key_env = "JCODE_BING_API_KEY"
+bing_market = "en-US"
+searxng_url_env = "JCODE_SEARXNG_URL"
+
+[tools]
+profile = ""
+enabled = []
+disabled = []
+disable_base_tools = false
+mcp_tools = "auto"
+mcp_tools_token_threshold = 8000
+
+[acp]
+profile = "standard"
+tool_profile = "acp"
+
+[provider]
+default_provider = "openrouter-eu"
+default_model = "openrouter-eu:openai/gpt-5.6-terra"
+allowed_providers = ["openrouter-eu"]
+openai_reasoning_effort = "low"
+openai_service_tier = "priority"
+openai_native_compaction_mode = "auto"
+openai_native_compaction_threshold_tokens = 200000
+preserve_reasoning_context = true
+cross_provider_failover = "countdown"
+same_provider_account_failover = true
+stream_idle_timeout_secs = 180
+max_retries = 8
+retry_backoff_cap_secs = 30
+
+[agents]
+swarm_model = "openrouter-eu:openai/gpt-5.6-luna"
+swarm_spawn_mode = "inline"
+swarm_strip_layout = "vertical"
+memory_sidecar_enabled = true
+memory_rerank_cadence = 3
+memory_rerank_votes = 2
+memory_rerank_min_agree = 2
+memory_embedding_backend = "local"
+swarm_max_concurrent_agents = 4
+
+[terminal]
+
+[hooks]
+pre_tool_transform = "~/.jcode/plugins/rtk-transform"
+pre_tool_transform_timeout_ms = 500
+pre_tool_timeout_ms = 5000
+
+[ambient]
+enabled = false
+allow_api_keys = false
+min_interval_minutes = 5
+max_interval_minutes = 120
+pause_on_active_session = true
+proactive_work = true
+work_branch_prefix = "ambient/"
+visible = true
+
+[safety]
+ntfy_server = "https://ntfy.sh"
+desktop_notifications = true
+email_enabled = false
+email_smtp_port = 587
+email_imap_port = 993
+email_reply_enabled = false
+telegram_enabled = false
+telegram_reply_enabled = false
+discord_enabled = false
+discord_reply_enabled = false
+jade_relay_enabled = false
+jade_relay_reply_enabled = false
+jade_relay_launch_enabled = false
+
+[notifications]
+turn_complete = true
+turn_complete_min_secs = 120
+turn_complete_todo_min_secs = 30
+turn_complete_only_when_unfocused = true
+turn_complete_sound = "Glass"
+
+[gateway]
+enabled = false
+port = 7643
+bind_addr = "0.0.0.0"
+
+[compaction]
+mode = "reactive"
+lookahead_turns = 15
+ewma_alpha = 0.30000001192092896
+proactive_floor = 0.4000000059604645
+min_samples = 3
+stall_window = 5
+min_turns_between_compactions = 10
+topic_shift_threshold = 0.44999998807907104
+relevance_keep_threshold = 0.6499999761581421
+goal_window_turns = 5
+
+[power]
+prevent_sleep_while_streaming = true
+
+[autoreview]
+enabled = false
+
+[autojudge]
+enabled = false
+
+[launch_hotkeys]
+enabled = false
+entries = []
+imported = true

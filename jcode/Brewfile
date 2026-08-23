@@ -1,0 +1,4 @@
+brew "just"
+brew "python"
+brew "rust"
+brew "rtk"
