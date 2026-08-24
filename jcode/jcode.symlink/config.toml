@@ -83,9 +83,9 @@ check_updates = false
 memory = true
 swarm = true
 mermaid = true
-auto_poke = true
+auto_poke = false
 message_timestamps = true
-persist_memory_injections = true
+persist_memory_injections = false
 kv_cache_miss_notices = true
 update_channel = "stable"
 
@@ -110,29 +110,29 @@ tool_profile = "acp"
 
 [provider]
 default_provider = "openrouter-eu"
-default_model = "openrouter-eu:openai/gpt-5.6-terra"
+default_model = "openai/gpt-5.6-terra"
 allowed_providers = ["openrouter-eu"]
 openai_reasoning_effort = "low"
-openai_service_tier = "priority"
+openai_service_tier = "flex"
 openai_native_compaction_mode = "auto"
 openai_native_compaction_threshold_tokens = 200000
 preserve_reasoning_context = true
 cross_provider_failover = "countdown"
-same_provider_account_failover = true
+same_provider_account_failover = false
 stream_idle_timeout_secs = 180
-max_retries = 8
+max_retries = 2
 retry_backoff_cap_secs = 30
 
 [agents]
 swarm_model = "openrouter-eu:openai/gpt-5.6-luna"
 swarm_spawn_mode = "inline"
 swarm_strip_layout = "vertical"
-memory_sidecar_enabled = true
+memory_sidecar_enabled = false
 memory_rerank_cadence = 3
 memory_rerank_votes = 2
 memory_rerank_min_agree = 2
 memory_embedding_backend = "local"
-swarm_max_concurrent_agents = 4
+swarm_max_concurrent_agents = 1
 
 [terminal]
 

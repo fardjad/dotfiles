@@ -1,0 +1,1 @@
+export JCODE_NO_TELEMETRY=1
