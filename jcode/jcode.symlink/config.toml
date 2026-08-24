@@ -129,6 +129,7 @@ retry_backoff_cap_secs = 30
 [providers]
 
 [agents]
+memory_model = "openrouter-eu:gpt-5.6-luna"
 memory_sidecar_enabled = false
 memory_rerank_cadence = 3
 memory_rerank_votes = 2
@@ -197,9 +198,11 @@ prevent_sleep_while_streaming = true
 
 [autoreview]
 enabled = true
+model = "openrouter-eu:openai/gpt-5.6-terra"
 
 [autojudge]
 enabled = true
+model = "openrouter-eu:gpt-5.6-luna"
 
 [launch_hotkeys]
 enabled = false
