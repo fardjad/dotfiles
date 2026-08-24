@@ -81,7 +81,7 @@ side_panel = true
 [features]
 check_updates = false
 memory = true
-swarm = false
+swarm = true
 mermaid = true
 auto_poke = false
 message_timestamps = true
