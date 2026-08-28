@@ -4,6 +4,7 @@ brew "pinentry-mac" if OS.mac? # needed by autoupdate
 cask "appcleaner" if OS.mac?
 cask "calibre" if OS.mac?
 cask "font-fira-code-nerd-font" if OS.mac?
+cask "firefox@developer-edition" if OS.mac?
 cask "github" if OS.mac?
 cask "ghostty" if OS.mac?
 cask "iina" if OS.mac?
