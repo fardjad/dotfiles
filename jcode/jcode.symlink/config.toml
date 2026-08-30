@@ -123,8 +123,8 @@ preserve_reasoning_context = true
 cross_provider_failover = "countdown"
 same_provider_account_failover = false
 stream_idle_timeout_secs = 180
-max_retries = 2
-retry_backoff_cap_secs = 30
+max_retries = 8
+retry_backoff_cap_secs = 300
 
 [providers]
 
