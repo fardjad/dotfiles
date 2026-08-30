@@ -32,4 +32,5 @@ fi
 if [ "$should_exit" -eq 1 ]; then
   exit 0
 fi
-git clone https://github.com/fardjad/astronvim_config "$HOME/.config/nvim"
+
+link_file "./config.symlink" "$HOME/.config/nvim"
