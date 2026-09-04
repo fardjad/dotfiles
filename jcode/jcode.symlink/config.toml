@@ -1,3 +1,6 @@
+[server]
+wake_mode = "internal"
+
 [keybindings]
 scroll_up = "ctrl+shift+k"
 scroll_down = "ctrl+shift+j"
@@ -69,6 +72,8 @@ keybinding_hints = true
 theme = ""
 active_sessions_manager = false
 external_sessions = true
+session_picker_default_filter = "current-dir"
+session_picker_sort = "created"
 usage_display = "left"
 overscroll_status = "on"
 
@@ -129,12 +134,16 @@ retry_backoff_cap_secs = 300
 [providers]
 
 [agents]
+swarm_model = "openrouter-eu:gpt-5.6-terra"
+swarm_spawn_mode = "inline"
+swarm_strip_layout = "vertical"
 memory_model = "openrouter-eu:gpt-5.6-luna"
 memory_sidecar_enabled = false
 memory_rerank_cadence = 3
 memory_rerank_votes = 2
 memory_rerank_min_agree = 2
 memory_embedding_backend = "local"
+swarm_max_concurrent_agents = 32
 
 [terminal]
 
@@ -198,7 +207,7 @@ prevent_sleep_while_streaming = true
 
 [autoreview]
 enabled = true
-model = "openrouter-eu:openai/gpt-5.6-terra"
+model = "openrouter-eu:z-ai/glm-5.2"
 
 [autojudge]
 enabled = true

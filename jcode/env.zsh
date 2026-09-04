@@ -1,1 +1,2 @@
 export JCODE_NO_TELEMETRY=1
+export JCODE_NO_MENUBAR=1
