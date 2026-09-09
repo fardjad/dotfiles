@@ -85,10 +85,10 @@ side_panel = true
 
 [features]
 check_updates = false
-memory = true
+memory = false
 swarm = true
 mermaid = true
-auto_poke = false
+auto_poke = true
 message_timestamps = true
 persist_memory_injections = false
 kv_cache_miss_notices = true
@@ -134,7 +134,7 @@ retry_backoff_cap_secs = 300
 [providers]
 
 [agents]
-swarm_model = "openrouter-eu:gpt-5.6-terra"
+swarm_model = "openrouter-eu:gpt-5.6-luna"
 swarm_spawn_mode = "inline"
 swarm_strip_layout = "vertical"
 memory_model = "openrouter-eu:gpt-5.6-luna"
@@ -143,7 +143,22 @@ memory_rerank_cadence = 3
 memory_rerank_votes = 2
 memory_rerank_min_agree = 2
 memory_embedding_backend = "local"
-swarm_max_concurrent_agents = 32
+
+[agents.coordinator]
+allowed_tools = [
+  "todo",
+  "initiative",
+  "schedule",
+  "open",
+  "invalid",
+  "swarm_explorer",
+  "swarm_fixer",
+  "swarm_research",
+  "swarm_bash-runner",
+  "swarm_automation",
+  "swarm_mcp-specialist",
+]
+swarm_max_concurrent_agents = 1
 
 [terminal]
 
@@ -206,11 +221,11 @@ goal_window_turns = 5
 prevent_sleep_while_streaming = true
 
 [autoreview]
-enabled = true
+enabled = false
 model = "openrouter-eu:z-ai/glm-5.2"
 
 [autojudge]
-enabled = true
+enabled = false
 model = "openrouter-eu:gpt-5.6-luna"
 
 [launch_hotkeys]
