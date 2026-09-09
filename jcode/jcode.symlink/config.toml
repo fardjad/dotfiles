@@ -106,7 +106,7 @@ profile = ""
 enabled = []
 disabled = []
 disable_base_tools = false
-mcp_tools = "auto"
+mcp_tools = "deferred"
 mcp_tools_token_threshold = 8000
 
 [acp]
