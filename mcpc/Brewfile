@@ -1,0 +1,2 @@
+brew "apify/tap/mcpc", trusted: true
+brew "uv"

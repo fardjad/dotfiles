@@ -1,0 +1,3 @@
+MCPC_SKILLS_SERVER_DIR="$DOTFILES/mcpc/skills-server"
+
+[ -d "$MCPC_SKILLS_SERVER_DIR" ] && export PATH="$MCPC_SKILLS_SERVER_DIR:$PATH"

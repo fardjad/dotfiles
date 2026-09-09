@@ -1,0 +1,269 @@
+#!/usr/bin/env -S uv run --script
+# /// script
+# requires-python = ">=3.10"
+# dependencies = [
+#   "fastmcp",
+# ]
+# ///
+
+"""Serve the mcpc module's local skills as MCP skill resources."""
+
+import argparse
+import os
+import signal
+import socket
+import subprocess
+import sys
+import tempfile
+import threading
+import time
+from pathlib import Path
+from shutil import move
+
+from fastmcp import FastMCP
+from fastmcp.server.providers.skills import SkillsDirectoryProvider
+
+
+SKILLS_DIRECTORY = Path(__file__).resolve().parents[1] / "skills"
+SCRIPT_DIRECTORY = Path(__file__).resolve().parent
+SCRIPT_PATH = Path(__file__).resolve()
+STATE_DIRECTORY = Path(
+    os.environ.get("XDG_STATE_HOME", Path.home() / ".local" / "state")
+) / "mcpc-skills-server"
+PID_FILE = SCRIPT_DIRECTORY / "server.pid"
+LOG_FILE = STATE_DIRECTORY / "server.log"
+DEFAULT_HOST = "127.0.0.1"
+DEFAULT_PORT = 58321
+DEFAULT_SESSION = "@global-skills"
+
+mcp = FastMCP("Local Skills")
+mcp.add_provider(SkillsDirectoryProvider(roots=SKILLS_DIRECTORY, reload=True))
+
+
+def process_is_running(pid: int) -> bool:
+    """Return whether pid currently identifies a process."""
+    try:
+        os.kill(pid, 0)
+    except ProcessLookupError:
+        return False
+    except PermissionError:
+        return True
+    return True
+
+
+def read_pid() -> int | None:
+    """Read a valid PID from the server PID file, cleaning invalid entries."""
+    try:
+        return int(PID_FILE.read_text().strip())
+    except (FileNotFoundError, ValueError):
+        PID_FILE.unlink(missing_ok=True)
+        return None
+
+
+def process_is_server(pid: int) -> bool:
+    """Return whether pid is running this skills-server script."""
+    try:
+        command = Path(f"/proc/{pid}/cmdline").read_bytes().replace(b"\0", b" ")
+    except FileNotFoundError:
+        return False
+    return str(SCRIPT_PATH).encode() in command
+
+
+def running_pid() -> int | None:
+    """Return the managed server PID and remove stale or unrelated entries."""
+    pid = read_pid()
+    if pid is None:
+        return None
+    if process_is_running(pid) and process_is_server(pid):
+        return pid
+    PID_FILE.unlink(missing_ok=True)
+    return None
+
+
+def listening_pid(host: str, port: int) -> int | None:
+    """Return the PID listening on host:port, if lsof can identify one."""
+    result = subprocess.run(
+        ["lsof", "-nP", "-t", f"-iTCP@{host}:{port}", "-sTCP:LISTEN"],
+        capture_output=True,
+        text=True,
+    )
+    if result.returncode != 0:
+        return None
+    return int(result.stdout.splitlines()[0])
+
+
+def ensure_port_available(host: str, port: int) -> None:
+    """Reject a port already owned by another process, restoring our stale PID."""
+    with socket.socket(socket.AF_INET, socket.SOCK_STREAM) as probe:
+        probe.setsockopt(socket.SOL_SOCKET, socket.SO_REUSEADDR, 1)
+        try:
+            probe.bind((host, port))
+            return
+        except OSError as error:
+            pid = listening_pid(host, port)
+            if pid is not None and process_is_server(pid):
+                PID_FILE.write_text(f"{pid}\n")
+                print(f"Local skills server is already running (PID {pid}).")
+                raise SystemExit(0)
+            owner = f" by PID {pid}" if pid is not None else ""
+            raise RuntimeError(f"Port {host}:{port} is already in use{owner}.") from error
+
+
+def wait_for_server(host: str, port: int, pid: int | None = None) -> None:
+    """Wait for the local MCP endpoint to accept connections."""
+    for _ in range(100):
+        try:
+            with socket.create_connection((host, port), timeout=0.1):
+                return
+        except OSError:
+            if pid is not None and not process_is_running(pid):
+                PID_FILE.unlink(missing_ok=True)
+                raise RuntimeError("Local skills server exited before becoming ready.")
+            time.sleep(0.1)
+    raise RuntimeError(f"Timed out waiting for local skills server at http://{host}:{port}/mcp.")
+
+
+def connect_mcpc(host: str, port: int) -> None:
+    """Create or reuse mcpc's persistent session for the local skills server."""
+    endpoint = f"http://{host}:{port}/mcp"
+    subprocess.run(["mcpc", "connect", endpoint, DEFAULT_SESSION], check=True)
+
+
+def run_foreground(host: str, port: int) -> None:
+    """Run the HTTP MCP server until it receives a termination signal."""
+    mcp.run(transport="http", host=host, port=port, host_origin_protection="auto")
+
+
+def start_server(foreground: bool, host: str, port: int) -> None:
+    """Start the server in the foreground or as a detached local process."""
+    if foreground:
+        ensure_port_available(host, port)
+        threading.Thread(target=lambda: (wait_for_server(host, port), connect_mcpc(host, port)), daemon=True).start()
+        run_foreground(host, port)
+        return
+
+    pid = running_pid()
+    if pid is not None:
+        wait_for_server(host, port, pid)
+        connect_mcpc(host, port)
+        print(f"Local skills server is already running (PID {pid}).")
+        return
+
+    ensure_port_available(host, port)
+
+    LOG_FILE.parent.mkdir(parents=True, exist_ok=True)
+    with LOG_FILE.open("a") as log_file:
+        process = subprocess.Popen(
+            [
+                sys.executable,
+                str(SCRIPT_PATH),
+                "start",
+                "--foreground",
+                "--host",
+                host,
+                "--port",
+                str(port),
+            ],
+            stdin=subprocess.DEVNULL,
+            stdout=log_file,
+            stderr=subprocess.STDOUT,
+            start_new_session=True,
+        )
+
+    PID_FILE.write_text(f"{process.pid}\n")
+    try:
+        wait_for_server(host, port, process.pid)
+        connect_mcpc(host, port)
+    except Exception:
+        os.kill(process.pid, signal.SIGTERM)
+        PID_FILE.unlink(missing_ok=True)
+        raise
+    print(f"Started local skills server (PID {process.pid}) at http://{host}:{port}/mcp.")
+
+
+def stop_server() -> None:
+    """Stop the managed background server, if it is running."""
+    pid = running_pid()
+    if pid is None:
+        print("Local skills server is not running.")
+        subprocess.run(["mcpc", "close", DEFAULT_SESSION], check=False)
+        return
+
+    os.kill(pid, signal.SIGTERM)
+    for _ in range(50):
+        if not process_is_running(pid):
+            PID_FILE.unlink(missing_ok=True)
+            subprocess.run(["mcpc", "close", DEFAULT_SESSION], check=False)
+            print(f"Stopped local skills server (PID {pid}).")
+            return
+        time.sleep(0.1)
+
+    raise RuntimeError(f"Timed out stopping local skills server (PID {pid}).")
+
+
+def install_skills(package: str, skill_names: list[str]) -> None:
+    """Install Skills CLI packages into the managed skills directory."""
+    with tempfile.TemporaryDirectory(prefix="mcpc-skills-") as staging_directory:
+        staging_path = Path(staging_directory)
+        command = ["npx", "--yes", "skills", "add", package, "--agent", "codex", "--yes", "--copy"]
+        for skill_name in skill_names:
+            command.extend(["--skill", skill_name])
+        subprocess.run(command, cwd=staging_path, check=True)
+
+        source_directory = staging_path / ".agents" / "skills"
+        skills = sorted(
+            path for path in source_directory.iterdir() if path.is_dir() and (path / "SKILL.md").is_file()
+        ) if source_directory.is_dir() else []
+        if not skills:
+            raise RuntimeError("Skills CLI did not install any SKILL.md directories.")
+
+        existing = [path.name for path in skills if (SKILLS_DIRECTORY / path.name).exists()]
+        if existing:
+            raise RuntimeError(f"Refusing to overwrite managed skills: {', '.join(existing)}.")
+
+        SKILLS_DIRECTORY.mkdir(parents=True, exist_ok=True)
+        for skill in skills:
+            move(str(skill), SKILLS_DIRECTORY / skill.name)
+            print(f"Installed managed skill: {skill.name}")
+
+
+def build_parser() -> argparse.ArgumentParser:
+    parser = argparse.ArgumentParser(
+        description="Serve local SKILL.md files from mcpc/skills over MCP.",
+    )
+    commands = parser.add_subparsers(dest="command", required=True)
+
+    start = commands.add_parser("start", help="Start the local skills MCP server.")
+    start.add_argument(
+        "--foreground",
+        action="store_true",
+        help="Run in the foreground instead of as a background process.",
+    )
+    start.add_argument("--host", default=DEFAULT_HOST, help=f"Bind host (default: {DEFAULT_HOST}).")
+    start.add_argument("--port", type=int, default=DEFAULT_PORT, help=f"Bind port (default: {DEFAULT_PORT}).")
+    commands.add_parser("stop", help="Stop the managed background server.")
+
+    install = commands.add_parser("install", help="Install a Skills CLI package into mcpc/skills.")
+    install.add_argument("package", help="Skills CLI package, such as owner/repository.")
+    install.add_argument(
+        "--skill",
+        action="append",
+        default=[],
+        dest="skill_names",
+        help="Install only this skill name. Repeat for multiple skills.",
+    )
+    return parser
+
+
+def main() -> None:
+    args = build_parser().parse_args()
+    if args.command == "install":
+        install_skills(args.package, args.skill_names)
+    elif args.command == "start":
+        start_server(args.foreground, args.host, args.port)
+    elif args.command == "stop":
+        stop_server()
+
+
+if __name__ == "__main__":
+    main()

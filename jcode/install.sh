@@ -26,6 +26,7 @@ fi
 
 mkdir -p "$HOME/.jcode"
 link_file "./jcode.symlink/config.toml" "$HOME/.jcode/config.toml"
+link_file "./jcode.symlink/prompt-overlay.md" "$HOME/.jcode/prompt-overlay.md"
 link_file "./jcode.symlink/swarm-prompt.md" "$HOME/.jcode/swarm-prompt.md"
 
 mkdir -p "$HOME/.jcode/plugins"
