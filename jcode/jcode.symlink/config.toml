@@ -104,7 +104,7 @@ searxng_url_env = "JCODE_SEARXNG_URL"
 [tools]
 profile = ""
 enabled = []
-disabled = []
+disabled = ["swarm"]
 disable_base_tools = false
 mcp_tools = "deferred"
 mcp_tools_token_threshold = 8000
@@ -143,22 +143,8 @@ memory_rerank_cadence = 3
 memory_rerank_votes = 2
 memory_rerank_min_agree = 2
 memory_embedding_backend = "local"
-
-[agents.coordinator]
-allowed_tools = [
-  "todo",
-  "initiative",
-  "schedule",
-  "open",
-  "invalid",
-  "swarm_explorer",
-  "swarm_fixer",
-  "swarm_research",
-  "swarm_bash-runner",
-  "swarm_automation",
-  "swarm_mcp-specialist",
-]
 swarm_max_concurrent_agents = 1
+
 
 [terminal]
 
@@ -206,7 +192,7 @@ port = 7643
 bind_addr = "0.0.0.0"
 
 [compaction]
-mode = "reactive"
+mode = "proactive"
 lookahead_turns = 15
 ewma_alpha = 0.30000001192092896
 proactive_floor = 0.4000000059604645
