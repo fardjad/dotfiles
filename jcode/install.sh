@@ -31,3 +31,5 @@ link_file "./jcode.symlink/prompt-overlay.md" "$HOME/.jcode/prompt-overlay.md"
 mkdir -p "$HOME/.jcode/plugins"
 install -m 755 "$JCODE_SOURCE_DIR/plugins/rtk/rtk-transform" \
   "$HOME/.jcode/plugins/rtk-transform"
+
+python3 "$JCODE_SOURCE_DIR"/workers/install-coordinator-prompt.py
