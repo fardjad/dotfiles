@@ -104,10 +104,8 @@ searxng_url_env = "JCODE_SEARXNG_URL"
 [tools]
 profile = ""
 enabled = []
-disabled = ["swarm"]
+disabled = ["swarm", "maintainer_feedback", "mcp"]
 disable_base_tools = false
-mcp_tools = "deferred"
-mcp_tools_token_threshold = 8000
 
 [acp]
 profile = "standard"
