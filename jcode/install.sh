@@ -26,7 +26,6 @@ fi
 
 mkdir -p "$HOME/.jcode"
 link_file "./jcode.symlink/config.toml" "$HOME/.jcode/config.toml"
-link_file "./jcode.symlink/prompt-overlay.md" "$HOME/.jcode/prompt-overlay.md"
 
 mkdir -p "$HOME/.jcode/plugins"
 install -m 755 "$JCODE_SOURCE_DIR/plugins/rtk/rtk-transform" \
