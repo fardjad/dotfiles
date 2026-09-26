@@ -23,7 +23,7 @@ engine = "searxng"
 searxng_url = "https://search.internal.4jd.io"
 
 [provider]
-default_model = "openai/gpt-5.6-terra"
+default_model = "openai/gpt-6-sol"
 default_provider = "openrouter-eu"
 allowed_providers = ["openrouter-eu"]
 openai_service_tier = "flex"
@@ -31,23 +31,23 @@ same_provider_account_failover = false
 retry_backoff_cap_secs = 300
 
 [agents]
-swarm_model = "openrouter-eu:gpt-5.6-luna"
-memory_model = "openrouter-eu:gpt-5.6-luna"
+swarm_model = "openrouter-eu:gpt-6-luna"
+memory_model = "openrouter-eu:gpt-6-luna"
 
 [hooks]
 pre_tool_transform = ["~/.jcode/plugins/rtk-transform"]
 
 [ambient]
-model = "openrouter-eu:gpt-5.6-terra"
+model = "openrouter-eu:gpt-6-sol"
 
 [compaction]
 mode = "proactive"
 
 [autoreview]
-model = "openrouter-eu:gpt-5.6-terra"
+model = "openrouter-eu:gpt-6-sol"
 
 [autojudge]
-model = "openrouter-eu:gpt-5.6-luna"
+model = "openrouter-eu:gpt-6-luna"
 
 [launch_hotkeys]
 enabled = false
