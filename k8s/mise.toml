@@ -1,10 +1,10 @@
 [tools]
 go = "latest"
-"http:kubectl" = { version = "latest", url = 'https://dl.k8s.io/release/v{{version}}/bin/{{os(macos="darwin")}}/{{arch(x64="amd64")}}/kubectl', version_list_url = "https://dl.k8s.io/release/stable.txt", version_regex = 'v?(\d+\.\d+\.\d+)', checksum_url = 'https://dl.k8s.io/release/v{{version}}/bin/{{os(macos="darwin")}}/{{arch(x64="amd64")}}/kubectl.sha256' }
+kubectl = "latest"
 "github:helm/helm" = { version = "latest", bin_path = '{{os(macos="darwin")}}-{{arch(x64="amd64")}}' }
 
 [tool_alias]
-docker = "go:github.com/docker/cli/cmd/docker"
+docker = "aqua:docker/cli"
 docker-compose = "github:docker/compose"
 docker-buildx = "github:docker/buildx"
 kubectx = "github:ahmetb/kubectx"
