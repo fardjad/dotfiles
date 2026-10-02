@@ -1,4 +1,0 @@
-brew "nvim"
-brew "tree-sitter"
-brew "ripgrep"
-brew "lazygit"
