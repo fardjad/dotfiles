@@ -2,7 +2,8 @@
 
 set -e
 
-source "$(dirname "$0")/../script/bootstrap.bash"
+cd "$(dirname "$0")"
+source "../script/bootstrap.bash"
 
 BASE_DIR="$HOME/.helper-scripts"
 mkdir -p "$BASE_DIR" 2>&1 > /dev/null

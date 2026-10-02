@@ -2,13 +2,9 @@
 
 set -e
 
-source "$(dirname "$0")/../script/bootstrap.bash"
-
-brew_bundle_install
-
-if ! check_command node; then
-  user 'make sure node.js is installed before running nvim'
-fi
+cd "$(dirname "$0")"
+source "../script/bootstrap.bash"
+mise_install_module
 
 if ! check_command python && ! check_command python3; then
   user 'make sure python is installed before running nvim'

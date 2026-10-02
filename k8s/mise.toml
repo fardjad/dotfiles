@@ -1,0 +1,34 @@
+[tools]
+go = "latest"
+"http:kubectl" = { version = "latest", url = 'https://dl.k8s.io/release/v{{version}}/bin/{{os(macos="darwin")}}/{{arch(x64="amd64")}}/kubectl', version_list_url = "https://dl.k8s.io/release/stable.txt", version_regex = 'v?(\d+\.\d+\.\d+)', checksum_url = 'https://dl.k8s.io/release/v{{version}}/bin/{{os(macos="darwin")}}/{{arch(x64="amd64")}}/kubectl.sha256' }
+"github:helm/helm" = { version = "latest", bin_path = '{{os(macos="darwin")}}-{{arch(x64="amd64")}}' }
+
+[tool_alias]
+docker = "go:github.com/docker/cli/cmd/docker"
+docker-compose = "github:docker/compose"
+docker-buildx = "github:docker/buildx"
+kubectx = "github:ahmetb/kubectx"
+kubens = "github:ahmetb/kubectx"
+
+[tools.docker]
+version = "latest"
+
+[tools.docker-compose]
+version = "latest"
+asset_pattern = 'docker-compose-{{os(macos="darwin")}}-{{arch(x64="x86_64", arm64="aarch64")}}'
+bin = "docker-compose"
+
+[tools.docker-buildx]
+version = "latest"
+asset_pattern = 'buildx-v{{version}}.{{os(macos="darwin")}}-{{arch(x64="amd64")}}'
+bin = "docker-buildx"
+
+[tools.kubectx]
+version = "latest"
+matching_regex = "^kubectx_v"
+rename_exe = "kubectx"
+
+[tools.kubens]
+version = "latest"
+matching_regex = "^kubens_v"
+rename_exe = "kubens"

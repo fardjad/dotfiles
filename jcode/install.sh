@@ -2,12 +2,15 @@
 
 set -e
 
-source "$(dirname "$0")/../script/bootstrap.bash"
+cd "$(dirname "$0")"
+source "../script/bootstrap.bash"
 
 readonly JCODE_INSTALLER_URL='https://raw.githubusercontent.com/fardjad/jcode/personalized/install.sh'
 readonly JCODE_REPOSITORY='https://github.com/fardjad/jcode.git'
 readonly JCODE_BRANCH='personalized'
 readonly JCODE_SOURCE_DIR="$HOME/.jcode/source"
+
+"$DOTFILES/rtk/install.sh"
 
 remote_bash_install "$JCODE_INSTALLER_URL"
 

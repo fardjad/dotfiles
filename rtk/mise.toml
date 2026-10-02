@@ -1,0 +1,2 @@
+[tools]
+"github:rtk-ai/rtk" = { version = "latest", matching_regex = '^rtk-(aarch64|x86_64)-(apple-darwin|unknown-linux-(gnu|musl))\\.tar\\.gz$', strip_components = 0 }

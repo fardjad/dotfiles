@@ -2,7 +2,8 @@
 
 set -e
 
-source "$(dirname "$0")/../script/bootstrap.bash"
+cd "$(dirname "$0")"
+source "../script/bootstrap.bash"
 
 if ! is_mac; then
   info "This machine is not running macOS. Skipping..."

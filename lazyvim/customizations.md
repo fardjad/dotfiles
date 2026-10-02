@@ -7,7 +7,7 @@ This document is the source of truth for the intended behavior and preferences o
 - Reload user options, autocmds, and keymaps with `:ReloadConfig`, configured in [`config.symlink/lua/config/keymaps.lua`](config.symlink/lua/config/keymaps.lua).
 - Resize panes one step with Ctrl-Alt-H/J/K/L in normal and terminal modes, configured in [`config.symlink/lua/config/keymaps.lua`](config.symlink/lua/config/keymaps.lua).
 - Create a fresh Snacks terminal in the current window with `,t`; when it exits, restore the prior buffer in that window without closing panes. Use `,T` to select any valid Snacks terminal buffer, including hidden ones. The picker implementation belongs in [`config.symlink/lua/config/terminal_picker.lua`](config.symlink/lua/config/terminal_picker.lua), not [`config.symlink/lua/config/keymaps.lua`](config.symlink/lua/config/keymaps.lua).
-- Use lazygit for the Git workflow through `,gg`; it is declared in [`Brewfile`](Brewfile).
+- Use lazygit for the Git workflow through `,gg`; it is managed by the [lazygit module](../lazygit/).
 - Automatically reload unmodified open buffers when their files change externally, checking on focus, buffer entry, and idle cursor events. This is configured in [`config.symlink/lua/config/autocmds.lua`](config.symlink/lua/config/autocmds.lua).
 - Toggle the Snacks explorer rooted at the current working directory with `Ctrl-/`, configured in [`config.symlink/lua/config/keymaps.lua`](config.symlink/lua/config/keymaps.lua).
 - Toggle Snacks terminals with Ctrl-Backtick. A numeric count selects an independent terminal, such as 2 Ctrl-Backtick for terminal 2. This is configured in [`config.symlink/lua/config/keymaps.lua`](config.symlink/lua/config/keymaps.lua).

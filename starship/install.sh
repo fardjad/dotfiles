@@ -2,12 +2,7 @@
 
 set -e
 
-source "$(dirname "$0")/../script/bootstrap.bash"
-
-brew_bundle_install
-
-if ! check_command brew; then
-  fail 'brew must be installed'
-fi
+cd "$(dirname "$0")"
+source "../script/bootstrap.bash"
 
 link_file "./starship.symlink" "$HOME/.starship"

@@ -4,6 +4,7 @@ popd > /dev/null
 
 export NONINTERACTIVE=1
 export HOMEBREW_BUNDLE_NO_LOCK=1
+export MODULE_DIR="$(pwd -P)"
 
 info() {
   printf "\r  [ \033[00;34m..\033[0m ] $1\n"
@@ -32,13 +33,71 @@ brew_bundle_install() {
     fail 'brew must be installed'
   fi
 
-  pushd "$(dirname "$0")" > /dev/null
-
   brew bundle install -q "$@" \
     | sed '/^Homebrew Bundle complete.*/d' \
     | sed 's/^/  [brew] /'
+}
 
-  popd > /dev/null
+mise_install_module() {
+  if ! check_command mise; then
+    fail 'mise must be installed and available on PATH'
+  fi
+
+  local module_dir="$(pwd -P)"
+  local module_name
+  module_name="$(basename "$module_dir")"
+  local mise_conf_d="${MISE_CONFIG_DIR:-${XDG_CONFIG_HOME:-$HOME/.config}/mise}/conf.d"
+  if [ ! -f "$module_dir/mise.toml" ]; then
+    fail "mise module config not found: $module_dir/mise.toml"
+  fi
+
+  mkdir -p "$mise_conf_d"
+
+  local legacy_name legacy_fragment legacy_source
+  for legacy_name in atuin bat bun deno eza fzf gh lazygit neovim nodejs ripgrep starship tlrc uv; do
+    legacy_fragment="$mise_conf_d/$legacy_name"
+    legacy_source="$DOTFILES/mise/tools/$legacy_name.symlink"
+    if [ -L "$legacy_fragment" ] && [ "$(readlink "$legacy_fragment")" = "$legacy_source" ]; then
+      rm "$legacy_fragment"
+      info "removed legacy mise fragment link: $legacy_fragment"
+    fi
+  done
+
+  local config_link="$mise_conf_d/$module_name.toml"
+  if [ -e "$config_link" ] || [ -L "$config_link" ]; then
+    if [ -L "$config_link" ] && [ "$(readlink -f "$config_link")" = "$module_dir/mise.toml" ]; then
+      info "mise config already linked: $config_link"
+    else
+      user "leaving unmanaged mise config unchanged: $config_link"
+      return 0
+    fi
+  else
+    link_file "$module_dir/mise.toml" "$config_link"
+  fi
+
+  local -a tools=()
+  local tool_name
+  while IFS= read -r tool_name; do
+    [ -n "$tool_name" ] && tools+=("$tool_name")
+  done < <(awk '
+    /^[[:space:]]*\[tools\][[:space:]]*(#.*)?$/ { section = "managed"; next }
+    /^[[:space:]]*\[tool_alias\][[:space:]]*(#.*)?$/ { section = "managed"; next }
+    /^[[:space:]]*\[/ { section = "" }
+    section == "managed" && /=/ {
+      key = $0
+      sub(/[[:space:]]+#.*/, "", key)
+      sub(/=.*/, "", key)
+      gsub(/^[[:space:]]+|[[:space:]]+$/, "", key)
+      if (substr(key, 1, 1) == "\"" || substr(key, 1, 1) == "\047") {
+        key = substr(key, 2, length(key) - 2)
+      }
+      if (!seen[key]++) print key
+    }
+  ' "$module_dir/mise.toml")
+
+  if [ "${#tools[@]}" -gt 0 ]; then
+    mise --yes install "${tools[@]}"
+  fi
 }
 
 is_mac() {
@@ -50,9 +109,12 @@ is_codespaces() {
 }
 
 link_file() {
-  pushd "$(dirname "$0")" > /dev/null
-
-  src="$(readlink -f "$1")"
+  local src dst
+  case "$1" in
+    /*) src="$1" ;;
+    *) src="$MODULE_DIR/$1" ;;
+  esac
+  src="$(readlink -f "$src")"
   if [ $? -ne 0 ]; then
     fail "could not find $1"
   fi
@@ -69,8 +131,6 @@ link_file() {
   fi
   ln -sf "$src" "$dst"
   success "linked $src to $dst"
-
-  popd > /dev/null
 }
 
 remote_bash_install() {

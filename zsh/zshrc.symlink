@@ -8,6 +8,10 @@ export DOTFILES="$(readlink -f $(dirname $(readlink -f $(print -P %N)))/..)"
 
 export PATH="$(brew --prefix)/sbin:$PATH"
 
+if command -v mise &> /dev/null; then
+  eval "$(mise activate zsh)"
+fi
+
 export ZSH_DISABLE_COMPFIX="true"
 
 source "$(brew --prefix antidote)/share/antidote/antidote.zsh"

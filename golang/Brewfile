@@ -1,4 +1,3 @@
 brew "mercurial"
 brew "bison"
 brew "protobuf"
-brew "golang"

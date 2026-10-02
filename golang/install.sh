@@ -2,10 +2,11 @@
 
 set -e
 
-source "$(dirname "$0")/../script/bootstrap.bash"
-
+cd "$(dirname "$0")"
+source "../script/bootstrap.bash"
 brew_bundle_install
+mise_install_module
 
 if ! is_mac; then
-  go env -w CC=gcc CXX="g++"
+  mise exec -- go env -w CC=gcc CXX="g++"
 fi

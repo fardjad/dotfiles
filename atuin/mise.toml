@@ -1,0 +1,2 @@
+[tools]
+"github:atuinsh/atuin" = { version = "latest", matching_regex = '^atuin-(aarch64|x86_64)-' }

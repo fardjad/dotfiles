@@ -2,8 +2,8 @@
 
 set -e
 
-source "$(dirname "$0")/../script/bootstrap.bash"
-
-brew_bundle_install
-
+cd "$(dirname "$0")"
+source "../script/bootstrap.bash"
+("$DOTFILES/rust/install.sh")
+mise_install_module
 user "it's recommended to install one of the patched fonts available at https://www.nerdfonts.com/font-downloads"

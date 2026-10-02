@@ -21,6 +21,7 @@ The following software packages are required to run the setup script.
 | [curl](https://curl.haxx.se)              | Used for downloading files from the web                       |
 | [bash](https://www.gnu.org/software/bash) | Required for running the installer script                     |
 | [brew](https://brew.sh)                   | Required for installing packages on macOS or Linux            |
+| [mise](https://mise.jdx.dev/)             | Required for modules that declare tools in `mise.toml`; install it yourself |
 | [sudo](https://www.sudo.ws)               | Required by the installer script to run some commands as root |
 
 Make sure the dependencies are installed, and clone the repository:
@@ -40,8 +41,8 @@ You can choose to install all of the modules by running the following command:
 #### Install Modules Selectively
 
 If you don’t want to install everything, you can run the installer script of
-each module individually. For example, to install the `nodejs` module, you can
-run:
+each module individually. After installing mise yourself, each module installer
+links its local `mise.toml` and installs the tools declared there. For example:
 
 ```bash
 ~/.dotfiles/nodejs/install.sh

@@ -2,6 +2,6 @@
 
 set -e
 
-source "$(dirname "$0")/../script/bootstrap.bash"
-
-brew_bundle_install
+cd "$(dirname "$0")"
+source "../script/bootstrap.bash"
+mise_install_module
