@@ -1,0 +1,3 @@
+[tools]
+just = "latest"
+"cargo:just-lsp" = "latest"
