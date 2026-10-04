@@ -1,5 +1,0 @@
-[settings]
-idiomatic_version_file_enable_tools = ["node", "deno"]
-
-[settings.upgrade]
-auto_prune = false

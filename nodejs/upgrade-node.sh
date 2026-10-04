@@ -43,7 +43,7 @@ load_mise_environment
 printf 'Installing the latest global npm packages...\n'
 npm install --global corepack@latest
 npm install --global npm@latest
-if (( ${#global_packages[@]} > 0 )); then
+if ((${#global_packages[@]} > 0)); then
   npm install --global "${global_packages[@]}"
 fi
 corepack enable

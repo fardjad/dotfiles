@@ -15,14 +15,14 @@ distributions.
 
 The following software packages are required to run the setup script.
 
-| Dependency                                | Purpose                                                       |
-| ----------------------------------------- | ------------------------------------------------------------- |
-| [git](https://git-scm.com)                | Required for cloning this repository                          |
-| [curl](https://curl.haxx.se)              | Used for downloading files from the web                       |
-| [bash](https://www.gnu.org/software/bash) | Required for running the installer script                     |
-| [brew](https://brew.sh)                   | Required for installing packages on macOS or Linux            |
+| Dependency                                | Purpose                                                                     |
+| ----------------------------------------- | --------------------------------------------------------------------------- |
+| [git](https://git-scm.com)                | Required for cloning this repository                                        |
+| [curl](https://curl.haxx.se)              | Used for downloading files from the web                                     |
+| [bash](https://www.gnu.org/software/bash) | Required for running the installer script                                   |
+| [brew](https://brew.sh)                   | Required for installing packages on macOS or Linux                          |
 | [mise](https://mise.jdx.dev/)             | Required for modules that declare tools in `mise.toml`; install it yourself |
-| [sudo](https://www.sudo.ws)               | Required by the installer script to run some commands as root |
+| [sudo](https://www.sudo.ws)               | Required by the installer script to run some commands as root               |
 
 Make sure the dependencies are installed, and clone the repository:
 
