@@ -1,6 +1,7 @@
 # Minimal Superfile UI defaults.
 # Supported settings documented at:
 # https://superfile.dev/configure/superfile-config/
+theme = 'base16-eighties'
 sidebar_width = 0
 show_panel_footer_info = false
 default_open_file_preview = false
