@@ -14,3 +14,4 @@ fi
 
 mkdir -p "$(dirname "$hotkeys_path")"
 link_file "./hotkeys.toml" "$hotkeys_path"
+link_file "./config.toml" "$(dirname "$hotkeys_path")/config.toml"
