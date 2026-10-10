@@ -48,7 +48,7 @@ effort = "none"
 effort = "none"
 
 [hooks]
-pre_tool_transform = ["~/.jcode/plugins/rtk-transform"]
+pre_tool_transform = ["~/.jcode/plugins/rtk/rtk-transform"]
 
 [ambient]
 model = "openrouter-eu:gpt-6-luna"
