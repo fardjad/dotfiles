@@ -14,6 +14,14 @@ if ! grep -q "$ZSH_PATH" /etc/shells; then
 fi
 
 if is_mac; then
+  CURRENT_SHELL="$(dscl . -read "/Users/$(whoami)" UserShell | awk '{print $2}')"
+else
+  CURRENT_SHELL="$(getent passwd "$(whoami)" | cut -d: -f7)"
+fi
+
+if [ "$CURRENT_SHELL" = "$ZSH_PATH" ]; then
+  info "login shell is already $ZSH_PATH; skipping shell change"
+elif is_mac; then
   chsh -u "$(whoami)" -s "$ZSH_PATH"
 else
   sudo chsh "$(whoami)" -s "$ZSH_PATH"
