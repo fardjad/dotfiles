@@ -22,9 +22,11 @@ disabled = [
 [websearch]
 engine = "searxng"
 searxng_url = "https://search.internal.4jd.io"
+prefer_native = false
+fallback_engines = []
 
 [provider]
-default_model = "openai/gpt-6-luna"
+default_model = "openai/gpt-6.1-sol"
 default_provider = "openrouter-eu"
 allowed_providers = ["openrouter-eu"]
 openai_service_tier = "flex"
@@ -33,31 +35,34 @@ retry_backoff_cap_secs = 300
 
 [agents]
 swarm_model = "openrouter-eu:gpt-6-luna"
-swarm_root_effort = "max"
-swarm_deep_root_effort = "max"
-swarm_effort = "none"
+swarm_root_effort = "medium"
+swarm_deep_root_effort = "medium"
+swarm_effort = "max"
 memory_model = "openrouter-eu:gpt-6-luna"
 
 [agents.worker_blueprints.fixer]
-effort = "none"
+effort = "max"
 
 [agents.worker_blueprints.investigator]
-effort = "none"
+effort = "max"
 
 [agents.worker_blueprints.research]
-effort = "none"
+effort = "max"
 
 [hooks]
 pre_tool_transform = ["~/.jcode/plugins/rtk/rtk-transform"]
+post_tool_transform = ["~/.jcode/plugins/delegation-guard/delegation-guard-transform"]
+post_tool_transform_timeout_ms = 500
 
 [ambient]
 model = "openrouter-eu:gpt-6-luna"
 
 [compaction]
 mode = "proactive"
+max_context_tokens = 375000
 
 [autoreview]
-model = "openrouter-eu:gpt-6-sol"
+model = "openrouter-eu:gpt-6.1-sol"
 
 [autojudge]
 model = "openrouter-eu:gpt-6-luna"
