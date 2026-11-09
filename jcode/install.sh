@@ -18,7 +18,10 @@ if [ "${JCODE_FORCE_INSTALL:-0}" = "1" ]; then
   info 'forcing Jcode source installation'
 fi
 
-brew_bundle_install
+bash "$DOTFILES/python/install.sh"
+python_bin="$(mise -C "$DOTFILES/python" which python3 --tool python)"
+[ -x "$python_bin" ] || fail 'mise did not provide Python'
+export PATH="$(dirname "$python_bin"):$PATH"
 
 "$DOTFILES/just/install.sh"
 "$DOTFILES/rust/install.sh"
@@ -40,7 +43,7 @@ fi
 (
   cd "$JCODE_SOURCE_DIR"
   just install-patched-version
-  just ensure-personal-assets
+  "$python_bin" tools/scripts/setup_assets.py
 )
 
 link_file "./jcode.symlink/config.toml" "$HOME/.jcode/config.toml"
