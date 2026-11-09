@@ -193,3 +193,4 @@ dist
 .commit
 vim/vim.symlink/plugged
 tmux/tmux.symlink/plugins
+herdr/__pycache__/

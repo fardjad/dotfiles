@@ -1,0 +1,11 @@
+[[plugin]]
+id = "annotate"
+source = "plannotator/herdr-annotate"
+
+[[plugin]]
+id = "herdr-sidebar"
+source = "alexarthurs/herdr-sidebar/plugins/herdr-sidebar"
+
+[[plugin]]
+id = "herdr-navigator"
+source = "thanhdat77/herdr-navigator"
