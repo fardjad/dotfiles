@@ -6,3 +6,4 @@ vim.g.maplocalleader = ","
 
 vim.opt.wrap = false
 vim.opt.colorcolumn = "80,120"
+vim.opt.clipboard = "unnamedplus"
