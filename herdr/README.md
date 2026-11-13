@@ -33,10 +33,16 @@ with Python 3.11 or newer. Its isolated tests run with
 
 ## Shortcuts
 
-The configured prefix is `Ctrl+Space` or `Ctrl+B`:
+`config.toml` leaves Herdr's built-in key settings untouched, so built-in
+defaults are inherited. The default prefix is `Ctrl+B`; `prefix` below means
+that prefix. Inspect the full defaults with `herdr --default-config`. After
+editing the config, validate it with `herdr config check` and apply it to a
+running server with `herdr server reload-config`.
+
+The plugin shortcuts are:
 
 - `prefix+a`: capture annotation; `prefix+Shift+a`: copy context.
 - `prefix+Ctrl+a`: copy and archive annotations; `prefix+Ctrl+v`: paste an archive; `prefix+Ctrl+s`: send and archive.
 - `prefix+m`: manage annotations; `prefix+Ctrl+d`: review documents.
 - `prefix+Alt+o`: review the agent's last reply; `prefix+Ctrl+o`: review the newest reply.
-- `prefix+f`: toggle the file Sidebar.
+- `prefix+f`: toggle the file Sidebar; `prefix+t`: open Navigator to jump to anything.
