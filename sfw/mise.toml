@@ -1,0 +1,2 @@
+[tools]
+"github:SocketDev/sfw-free" = { version = "latest", bin = "sfw" }
